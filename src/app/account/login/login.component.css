@@ -1,0 +1,17 @@
+
+
+.width{
+    width: 40%;
+}
+
+
+.height {
+min-height: 600px;
+}
+.background-color{
+    background-color: rgb(216, 243, 63);
+}
+
+.font {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

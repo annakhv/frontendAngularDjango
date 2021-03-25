@@ -1,0 +1,45 @@
+
+<header class="background-color p-3">
+  <h2 class="text-center font">Join to our Community</h2>
+</header>
+
+
+<main class="background-color height" >
+
+
+
+<div class="container width" >
+<form #filterForm="ngForm" (ngSubmit)="submitRegister()">
+  <div class="form-group">
+    <label for="username">Username </label>
+    <input type="text" class="form-control" id="username" name="username" [(ngModel)]="newuser.username">
+  </div>
+  <div class="form-group">
+    <label for="fname">First name </label>
+    <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="newuser.firstname">
+  </div>
+  <div class="form-group">
+    <label for="lname">Lastname:</label>
+    <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="newuser.lastname">
+  </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newuser.email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" name="password" [(ngModel)]="newuser.password">
+    </div>
+    <div class="form-group">
+      <label for="pwdr">Repeat Password:</label>
+      <input type="password" class="form-control" id="pwdr" name="repeatpassword" [(ngModel)]="newuser.repeatpassword">
+    </div>
+    <p>
+   <small>{{warning}}</small>
+    </p>
+    <button type="submit" class="btn btn-light">Submit</button>
+  </form>
+
+</div>
+
+</main>
