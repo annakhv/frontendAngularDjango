@@ -7,6 +7,8 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {Routes} from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 const routes: Routes =[
   {path: 'registeruser',component: RegisterComponent
@@ -14,14 +16,13 @@ const routes: Routes =[
 {
   path: 'login', component:LoginComponent
 },
-{ path: 'profile/:username', component: ProfileComponent
-
+{ path: 'profile/:username', component: ProfileComponent, canActivate: [AuthGuard]
+  
 },
-
 ]
 
 @NgModule({
-  declarations: [ RegisterComponent, LoginComponent, ProfileComponent],
+  declarations: [ RegisterComponent, LoginComponent, ProfileComponent, UpdateProfileComponent],
   imports: [
     CommonModule,
     FormsModule,

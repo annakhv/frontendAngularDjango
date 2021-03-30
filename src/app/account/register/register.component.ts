@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
       this._UserinfoService.register(this.newuser)
         .subscribe((responce: any) =>{
           if(responce.message =='ok'){
+          
             this._Router.navigate(['login'])
           }
           else{

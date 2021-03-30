@@ -1,6 +1,47 @@
 .height {
-    min-height: 600px;
+    min-height: 800px;
+    border-radius: 10px;
     }
-    .background-color{
-        background-color: rgb(230, 255, 91);
+.background-color{
+        background-color: rgb(235, 253, 130);
     }
+
+.margin {
+    margin-left: 125px;
+    margin-top:220px;
+}
+.picture{
+    background-color: rgb(243, 252, 191);
+    border-radius: 10px;
+    width: 300px;
+    height: 250px;
+}
+
+.picture:hover{
+    background-color: aliceblue;
+}
+
+.container{
+    background-color:rgb(223, 66, 61);
+}
+
+.button-width{
+    width: 250px;
+}
+
+
+.cursor {
+    cursor: pointer;
+}
+
+.button-border{
+    border:none;
+}
+
+.font{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.button:hover{
+    background-color: rgb(223, 66, 61);
+}

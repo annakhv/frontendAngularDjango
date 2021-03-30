@@ -15,11 +15,23 @@ export class LoginComponent implements OnInit {
   }
   user=new userData('username', 'password', false)
   warning: string;
+  getProfileData(user) {
+    this._UserinfoService.profile(user)
+       .subscribe((responce: any)=>{
+          if(responce.res === true ){
+            console.log('profile works')
+          }
+
+       })  
+
+ }
   onSubmit() {
     console.log(this.user)
       this._UserinfoService.logIn(this.user)
         .subscribe((responce: any) =>{
           if(responce.res === true){
+           localStorage.setItem('token', responce.token)
+            this.getProfileData(this.user);
             this._Router.navigate(['profile/', this.user.username])
           }else{
               this.warning="user credentials are not correct"
@@ -29,5 +41,7 @@ export class LoginComponent implements OnInit {
         });
 
   }
+
+ 
 }
 

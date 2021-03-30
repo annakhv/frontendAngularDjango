@@ -34,6 +34,11 @@ export class UserinfoService {
      )   
      */            
   }
-
+loggedIn(){
+  return !!localStorage.getItem('token')
+}
+profile(user: userData) : Observable <boolean> {
+  return this.http.post<boolean>(`${this.baseUrl}/profile/${user.username}`, user);
+}
 }
 
