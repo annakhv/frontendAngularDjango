@@ -8,7 +8,8 @@
 
 .margin {
     margin-left: 125px;
-    margin-top:220px;
+    margin-top:-40px;
+    position: relativ;
 }
 .picture{
     background-color: rgb(243, 252, 191);
@@ -17,9 +18,7 @@
     height: 250px;
 }
 
-.picture:hover{
-    background-color: aliceblue;
-}
+
 
 .container{
     background-color:rgb(223, 66, 61);
@@ -34,7 +33,9 @@
     cursor: pointer;
 }
 
-.button-border{
+
+
+.btn-outline-dark{
     border:none;
 }
 
@@ -42,6 +43,42 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.button:hover{
-    background-color: rgb(223, 66, 61);
+
+
+.btn-outline-dark:hover{
+    border:none;
+    background-color:rgb(223, 66, 61);
+}
+
+.pos {
+    border-radius: 5px;
+    position: fixed;
+    left:250px;
+    top:20px;
+    bottom: 10px;
+    right: 250px;
+    background-color:rgb(237, 248, 172);
+    z-index: 1;
+    overflow: auto;
+}
+
+
+.pos1{
+    border-radius: 3px;
+    position: fixed;
+    left:50%;
+    top: 40%;
+    bottom: 30%;
+    right: 35%;
+    background-color:rgb(237, 248, 172);
+    z-index: 1;
+}
+
+.sbtn {
+    border-radius: 5px;
+    border: none;
+}
+
+.sbtn:hover{
+    background-color:rgb(237, 248, 172);
 }

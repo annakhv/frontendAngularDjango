@@ -5,7 +5,7 @@ import {BASE_URL} from '../../config';
 import {userData} from '../account/login/sign';
 import {userRegister} from '../account/register/signin';
 import {catchError, retry, map, tap} from 'rxjs/operators'
-
+import {profile, education, work} from '../account/profile/profile.tempt';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,13 @@ export class UserinfoService {
 
   constructor(private http: HttpClient) { }
   logIn(user: userData) : Observable <boolean> {
-    return this.http.post<boolean>(`${this.baseUrl}/login`, user);
+    return this.http.post<boolean>(`${this.baseUrl}/account/login`, user);
   }
 
   register(newuser: userRegister) : Observable <any> {
     const headers = { 'content-type': 'application/json'} 
     return this.http
-    .post<any>(`${this.baseUrl}/register`, newuser, {'headers': headers})
+    .post<any>(`${this.baseUrl}/account/register`, newuser, {'headers': headers})
     /* .pipe(
        map((result)=>{
          if( result.message =="ok"){
@@ -37,8 +37,30 @@ export class UserinfoService {
 loggedIn(){
   return !!localStorage.getItem('token')
 }
-profile(user: userData) : Observable <boolean> {
-  return this.http.post<boolean>(`${this.baseUrl}/profile/${user.username}`, user);
+getProfile(username: string) : Observable <any> {
+  return this.http.get<any>(`${this.baseUrl}/account/profile/${username}`);
+}
+
+updateprofile(userProfile:profile, username:string){
+  return this.http.post<any>(`${this.baseUrl}/account/updateProfile/${username}`, userProfile);
+}
+
+addeducation(userEdu:education ,username:string){
+  return this.http.post<any>(`${this.baseUrl}/account/addEdu/${username}`, userEdu);
+}
+
+addwork(userWork: work, username:string){
+  return this.http.post<any>(`${this.baseUrl}/account/addWork/${username}`, userWork);
+}
+getEducation(username:string){
+    return this.http.get<any>(`${this.baseUrl}/account/getEdu/${username}`);
+}
+
+getWork(username:string){
+    return this.http.get<any>(`${this.baseUrl}/account/getWork/${username}`);
+}
+searchUser(searchText:string){
+  return this.http.get<any>(`${this.baseUrl}/account/search/${searchText}`);
 }
 }
 

@@ -1,0 +1,40 @@
+.background-color{
+    background-color: rgb(235, 253, 130);
+}
+
+.height {
+    min-height: 800px;
+    border-radius: 10px;
+    }
+
+
+.user{
+    background-color:rgb(245, 253, 199);
+    width: 70%;
+    max-height: 200px;
+    border-radius: 10px;
+}
+
+.user:hover{
+    background-color:rgb(240, 250, 186);
+}
+
+.btn:hover{
+    background-color:rgb(237, 248, 175);
+}
+
+.btn{
+    width: 150px;
+}
+
+.picture {
+    background-color: teal;
+    border-radius: 3px;
+    width: 150px;
+    height: auto;
+}
+
+.font{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: larger;
+}

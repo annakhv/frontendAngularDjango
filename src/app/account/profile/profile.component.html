@@ -1,47 +1,245 @@
 
+<main class="height background-color  font">
+  
 
-<main class="height background-color p-5 font">
     <div class="container rounded p-5" >
+     
+      <div >
+        <form class="form-inline" [formGroup]=searchForm (ngSubmit)="submitSearch()">
+        <div  class="form-group m-3" >
+          <label for="search">Search user</label><br>
+          <input formControlName="searchText" type="text" class="form-control m-3" id="search" name="search" >
+        </div>
+        <div >
+        <button type="submit" class="btn btn-light" >search</button>
+      </div>
+      </form>
+    </div>
+     
       <div class="row justify-content-around">
 <div class="col-4  p-2">
-<div class="picture ">
+<div class="picture" >
+  <img class="picture" [src]='profImage' [alt]='username' >
 <label for="myInputFile">
-    <img class="margin" src="https://img.icons8.com/ios/50/000000/upload--v1.png" width="40" height="40" />
-    <input type="file" name="myInputFile" id="myInputFile" style="display:none;" />
+    <img  class="margin" src="https://img.icons8.com/ios/50/000000/upload--v1.png" width="40" height="40" />
+    <input (change)='upload($event)' type="file" name="myInputFile" id="myInputFile" style="display:none;" />
   </label>
 </div >
 <br>
-<h1>name surname </h1>
+<h1>{{firstname}}</h1>
+<h1>{{ lastname}}</h1>
 </div>
 
-<div class="col-4  p-2  text-center">
-  
-  <button class="btn btn-outline-dark button-width cursor button-border "> <h3>followers</h3> </button> <br><hr>
-  <button class="btn btn-outline-dark button-width cursor button-border"> <h3>following</h3></button><br><hr>
-  <button class="btn btn-outline-dark button-width cursor button-border"><h3> Posts</h3></button>
+<div [class]="userType" class="col-4  p-2  text-center">
+  <button class="btn btn-outline-dark button-width cursor  "><h3> Home</h3></button><br><hr>
+  <button class="btn btn-outline-dark button-width cursor "> <h3>Followers</h3> </button> <br><hr>
+  <button class="btn btn-outline-dark button-width cursor  "> <h3>Following</h3></button><br><hr>
+  <button class="btn btn-outline-dark button-width cursor  "><h3> Posts</h3></button>
+ 
 
 </div>
-
-
 </div>
 <br>
 <hr>
 
+<div  [class]="display" class="pos p-5">
+  <h5 (click)="basicData()" class="text-right">close</h5>
+ <form #filterForm="ngForm" (ngSubmit)="profileSubmit()">
+   <br>
+   <small>{{message}}</small>
+   <br>
+   <br>
+   <div class="form-group">
+     <label for="date">Birth Date </label><br>
+     <input value="" type="date" class="form-control" id="date" name="birthdate" [(ngModel)]=userprofile.birthdate>
+   </div>
+   <div class="form-group">
+    <label for="ocountry">Country of origin  </label><br>
+    <select class="form-control" id="ocountry" name="originCountry" [(ngModel)]="userprofile.originCountry" >
+      <option>select</option>
+      <option *ngFor='let country of countries' >{{country['name']}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+  <label for="ccountry">Current Country  </label><br>
+  <select class="form-control" id="ccountry" name="currentCountry"[(ngModel)]="userprofile.currentCountry"  >
+    <option>select</option>
+    <option  *ngFor='let country of countries' >{{country['name']}}</option>
+  </select>
+  </div>
+  <div>
+    <label for='status'>relationship Status  </label><br>
+      <select class="form-control" id="status" name="status"[(ngModel)]="userprofile.status" >
+        <option >select</option>
+        <option value="single">single</option>
+        <option value="married">married</option>
+        <option value="widowed">widowed</option>
+        <option value="inarelationship">in a relationship</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-light">Update Profile</button>
+ </form>
+
+</div>
+<div [class]="_display" class="pos1 p-3 ">
+  <h6 (click)="eduWork()" class="text-right">close</h6>
+    <button (click)="edu()" class="sbtn">add Education</button> <br><br>
+   <button (click)="work()" class="sbtn">add Workplace</button>
+</div>
+
+<div [class]="displayEdu" class="pos p-5">
+  <h5 (click)="edu()" class="text-right">close</h5>
+  <form [formGroup]="eduForm" (ngSubmit)="submitEdu()">
+    <br>
+   <small>{{messageEdu}}</small>
+   <br>
+   <br>
+    <div class="form-group">
+      <label for="startdate">Start Date </label><br>
+      <input formControlName="startdate" value="" type="date" class="form-control" id="startdate" name="startdate" >
+    </div>
+    <div class="form-group">
+      <label for="enddate">End Date </label><br>
+      <input formControlName="enddate" value="" type="date" class="form-control" id="enddate" name="enddate">
+    </div>
+    <div class="form-group">
+      <label for='type'>Education level  </label><br>
+        <select formControlName="type" class="form-control" id="type" name="type" >
+          <option value="select">select</option>
+          <option value="High school">high school</option>
+          <option value="BA">bachelor of arts</option>
+          <option value="Bsc">bachelor of science</option>
+          <option value="MA">master of arts</option>
+          <option value="Msc">master of science</option>
+          <option value="Phd">doctorate</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="institution">institution </label><br>
+        <input formControlName="institution" type="text" class="form-control" id="institution" name="institution" >
+      </div>
+      <div class="form-group">
+        <label for="country"> Country  </label><br>
+        <select formControlName="country" class="form-control" id="country" name="country"  >
+          <option>select</option>
+          <option  *ngFor='let country of countries' >{{country['name']}}</option>
+        </select>
+  
+     <br>
+        <button type="submit" class="btn btn-light" >add education</button>
+       
+        </div>
+
+  </form>
+</div>
+<div [class]="displayWork" class="pos p-5">
+  <h5 (click)="work()" class="text-right">close</h5>
+  <form [formGroup]="workForm" (ngSubmit)="submitWork()">
+    <br>
+   <small>{{messageWork}}</small>
+   <br>
+   <br>
+    <div class="form-group">
+      <label for="startdate">Start Date </label><br>
+      <input formControlName="startdate" value="" type="date" class="form-control" id="startdate" name="startdate" >
+    </div>
+    <div class="form-group">
+      <label for="enddate">End Date </label><br>
+      <input formControlName="enddate" value="" type="date" class="form-control" id="enddate" name="enddate">
+    </div>
+      <div class="form-group">
+        <label for="workplace">workplace </label><br>
+        <input formControlName="workplace" type="text" class="form-control" id="workplace" name="workplace" >
+      </div>
+      <div class="form-group">
+        <label for="country"> Country  </label><br>
+        <select formControlName="country" class="form-control" id="country" name="country"  >
+          <option>select</option>
+          <option  *ngFor='let country of countries' >{{country['name']}}</option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-light" >add workplace</button>
+       
+        </div>
+
+  </form>
+</div>
+
+<div class="row justify-content-around">
+<div class=" col-1 p-2">
+  <h4 (click)="basicData()" [class]="userType" class="text-center">+</h4>
+</div>
+<div class=" col-5 p-2">
+  <h4 class="text-center"> basic info</h4> 
+</div>
+<div class=" col-1 p-2">
+  <h4  (click)="eduWork()"[class]="userType" class="text-center">+</h4>
+</div>
+<div class=" col-5 p-2">
+  <h4 class="text-center">work and education</h4>
+</div>
+</div>
+
+
 <div class="row justify-content-between">
   <div class=" col-6 p-2">
-    <h4 class="text-center">basic info</h4> 
-    <hr>
-    
+   
+ 
+
+    <table class="table ">
+  <tbody *ngIf="keys">
+    <tr *ngFor="let data of keys">
+      
+      <td  scope='col'>{{data}}</td>
+      <td  scope='col'>{{basic_prof[data]}}</td>
+    </tr>
+   
+  </tbody>
+
+    </table>
   </div>
 <div class=" col-6 p-2">
-  <h4 class="text-center">work and education</h4>
-  <hr>
-  <div class="row justify-content-between">
-    
+ 
+  
+  <table class="table ">
+    <tbody *ngIf="jsonParse">
+     
+      <tr *ngFor="let data of jsonParse">
+        <td  scope='col'>{{data.educationType}} at {{data.institution}}  
+          <div *ngIf="data.hasOwnProperty('country')">
+            {{data.country}}
+          </div>
+          <div *ngIf="data.hasOwnProperty('startDate')">
+           from  {{data.startDate}}
+          </div>
+          <div *ngIf="data.hasOwnProperty('endDate')">
+            to {{data.endDate}}
+          </div>
+        </td>
+      
+      </tr>
+      <tr *ngFor="let data of _jsonParse">
+        <td  scope='col'>worked at {{data.company}} 
+          <div *ngIf="data.hasOwnProperty('country')">
+          {{data.country}}
+        </div>
+        <div *ngIf="data.hasOwnProperty('startDate')">
+          from  {{data.startDate}}
+         </div>
+         <div *ngIf="data.hasOwnProperty('endDate')">
+           to {{data.endDate}}
+         </div>
+      </td>
+      
+      </tr>
+    </tbody>
+  
+      </table>
 
     
        
-</div>
+
 </div>
 </div>
 </div>
