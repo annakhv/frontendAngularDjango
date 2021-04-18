@@ -20,7 +20,7 @@ const routes: Routes =[
 { path: 'profile/:username/:type', component: ProfileComponent, canActivate: [AuthGuard]
   
 },
-{ path: 'search/:searchtext', component: SearchResultsComponent, canActivate: [AuthGuard]
+{ path: 'search/:username/:searchtext', component: SearchResultsComponent, canActivate: [AuthGuard]
   
 },
 ]

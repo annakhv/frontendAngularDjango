@@ -18,23 +18,23 @@
      
       <div class="row justify-content-around">
 <div class="col-4  p-2">
-<div class="picture" >
+<div  >
   <img class="picture" [src]='profImage' [alt]='username' >
 <label for="myInputFile">
-    <img  class="margin" src="https://img.icons8.com/ios/50/000000/upload--v1.png" width="40" height="40" />
+    <img  class="margin" src="https://img.icons8.com/ios/50/000000/upload--v1.png" width="30" height="auto" />
     <input (change)='upload($event)' type="file" name="myInputFile" id="myInputFile" style="display:none;" />
   </label>
 </div >
 <br>
-<h1>{{firstname}}</h1>
-<h1>{{ lastname}}</h1>
+<h1>{{firstname | titlecase}}</h1>
+<h1>{{ lastname | titlecase}}</h1>
 </div>
 
 <div [class]="userType" class="col-4  p-2  text-center">
-  <button class="btn btn-outline-dark button-width cursor  "><h3> Home</h3></button><br><hr>
-  <button class="btn btn-outline-dark button-width cursor "> <h3>Followers</h3> </button> <br><hr>
-  <button class="btn btn-outline-dark button-width cursor  "> <h3>Following</h3></button><br><hr>
-  <button class="btn btn-outline-dark button-width cursor  "><h3> Posts</h3></button>
+  <button class="btn but button-width cursor  "><h3> Home</h3></button><br><hr>
+  <button (click)="followers()" class="btn but button-width cursor "> <h3>Followers</h3> </button> <br><hr>
+  <button (click)="following()"  class="btn but button-width cursor  "> <h3>Following</h3></button><br><hr>
+  <button class="btn but button-width cursor  "><h3> Posts</h3></button>
  
 
 </div>
@@ -217,7 +217,7 @@
             to {{data.endDate}}
           </div>
         </td>
-      
+        <td [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
       </tr>
       <tr *ngFor="let data of _jsonParse">
         <td  scope='col'>worked at {{data.company}} 
@@ -231,7 +231,7 @@
            to {{data.endDate}}
          </div>
       </td>
-      
+      <td [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
       </tr>
     </tbody>
   

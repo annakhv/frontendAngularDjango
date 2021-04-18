@@ -62,5 +62,18 @@ getWork(username:string){
 searchUser(searchText:string){
   return this.http.get<any>(`${this.baseUrl}/account/search/${searchText}`);
 }
+
+
+getFollowers(username:string){
+  return this.http.get<any>(`${this.baseUrl}/account/getFollowers/${username}`);
+
 }
 
+getFollowing(username:string){
+  return this.http.get<any>(`${this.baseUrl}/account/getFollowing/${username}`);
+}
+
+followUser(thisUsername:string, otherUsername:string){
+  return this.http.get<any>(`${this.baseUrl}/account/followUser/${thisUsername}/${otherUsername}`);
+}
+}

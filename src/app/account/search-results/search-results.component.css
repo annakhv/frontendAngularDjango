@@ -21,10 +21,14 @@
 
 .btn:hover{
     background-color:rgb(237, 248, 175);
+    border:2px solid rgb(244, 247, 228);
+    
 }
 
 .btn{
     width: 150px;
+    box-shadow: none;
+    
 }
 
 .picture {

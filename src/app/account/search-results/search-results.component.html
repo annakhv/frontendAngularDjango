@@ -4,7 +4,7 @@
      <h1>{{message}}</h1>
     <div *ngFor='let username of usernames'  class="row justify-content-around user m-4  p-3">
       <div class=" col-3">
-        <img class="picture" [src]="search[username][2]" [alt]='picture' >
+        <img class="picture" [src]="search[username][3]" [alt]='picture' >
       </div >
       <div class="col-3 text-right">
       <h4>{{search[username][0] | titlecase }} </h4> 
@@ -12,8 +12,8 @@
       
       </div>
       <div class="col-3">
-         <button class="btn"><h5>Follow</h5></button><br>
-         <button (click)="viewProfile($event)"  class="btn"><h5 [id]='username'>View Profile</h5></button>
+         <button (click)="followOrUnfollow($event)"   class="btn"><h5 [data]='username'>{{search[username][2]}}</h5></button><br>
+         <button (click)="viewProfile($event)"  class="btn"><h5 [data]='username'>View Profile</h5></button>
       </div>
     </div>
    </div> 

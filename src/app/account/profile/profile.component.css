@@ -15,7 +15,7 @@
     background-color: rgb(243, 252, 191);
     border-radius: 10px;
     width: 300px;
-    height: 250px;
+    height: auto;
 }
 
 
@@ -35,9 +35,7 @@
 
 
 
-.btn-outline-dark{
-    border:none;
-}
+
 
 .font{
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -45,11 +43,20 @@
 
 
 
-.btn-outline-dark:hover{
-    border:none;
-    background-color:rgb(223, 66, 61);
+.but:hover
+{
+   
+    color: antiquewhite;
+    
+   
 }
 
+.but:focus,
+.but:active
+{
+    outline: none !important;
+    box-shadow: none !important;
+}
 .pos {
     border-radius: 5px;
     position: fixed;

@@ -110,6 +110,7 @@ export class ProfileComponent implements OnInit {
   .subscribe((responce:any)=>{
     if (responce.res === true){
       this._jsonParse=JSON.parse(responce.json)
+      console.log(this._jsonParse)
 
     }
   }
@@ -220,6 +221,16 @@ submitWork(){
 }
 
 submitSearch() {
-  this._Router.navigate([`search/${this.searchForm.value.searchText}`])
+  this._Router.navigate([`search/${this.username}/${this.searchForm.value.searchText}`])
+}
+
+followers(){
+  this._Router.navigate([`search/${this.username}/followers`])
+  console.log("works followers")
+}
+
+following(){
+  this._Router.navigate([`search/${this.username}/following`])
+  console.log("works following")
 }
 }
