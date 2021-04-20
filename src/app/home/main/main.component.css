@@ -1,0 +1,19 @@
+main {
+    background-color: rgb(247, 247, 188);
+    min-height: 650px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.question{
+    background-color: wheat;
+    min-height: 50px;
+    border-radius: 10px;
+    box-shadow:   0 0 3px 2px wheat;
+}
+
+.answer{
+    background-color: wheat;
+    min-height: 200px;
+    border-radius: 10px;
+    box-shadow:   0 0 3px 2px wheat;
+}

@@ -11,7 +11,7 @@
           <input formControlName="searchText" type="text" class="form-control m-3" id="search" name="search" >
         </div>
         <div >
-        <button type="submit" class="btn btn-light" >search</button>
+        <button type="submit" class=" btn but out" >search</button>
       </div>
       </form>
     </div>
@@ -31,10 +31,10 @@
 </div>
 
 <div [class]="userType" class="col-4  p-2  text-center">
-  <button class="btn but button-width cursor  "><h3> Home</h3></button><br><hr>
+  <button  class="btn but button-width cursor  "><h3> Home</h3></button><br><hr>
   <button (click)="followers()" class="btn but button-width cursor "> <h3>Followers</h3> </button> <br><hr>
   <button (click)="following()"  class="btn but button-width cursor  "> <h3>Following</h3></button><br><hr>
-  <button class="btn but button-width cursor  "><h3> Posts</h3></button>
+  <button class="btn but button-width cursor  "><h3> Questions</h3></button>
  
 
 </div>
@@ -84,11 +84,11 @@
 </div>
 <div [class]="_display" class="pos1 p-3 ">
   <h6 (click)="eduWork()" class="text-right">close</h6>
-    <button (click)="edu()" class="sbtn">add Education</button> <br><br>
-   <button (click)="work()" class="sbtn">add Workplace</button>
+    <button (click)="edu()" class="sbtn but p-2">add Education</button> <br>
+   <button (click)="work()" class="sbtn but p-2">add Workplace</button>
 </div>
 
-<div [class]="displayEdu" class="pos p-5">
+<div [class]="displayEdu"  class="pos p-5">
   <h5 (click)="edu()" class="text-right">close</h5>
   <form [formGroup]="eduForm" (ngSubmit)="submitEdu()">
     <br>
@@ -133,6 +133,51 @@
 
   </form>
 </div>
+<div [class]="updateEduClass"  class="pos p-5">
+  <h5 (click)="updateEdu($event)" class="text-right">close</h5>
+  <form [formGroup]="eduForm" (ngSubmit)="submitUpdateEdu()">
+    <br>
+   <small>{{messageUpdateEdu}}</small>
+   <br>
+   <br>
+    <div class="form-group">
+      <label for="startdate">Start Date </label><br>
+      <input formControlName="startdate" value="" type="date" class="form-control" id="startdate" name="startdate" >
+    </div>
+    <div class="form-group">
+      <label for="enddate">End Date </label><br>
+      <input formControlName="enddate" value="" type="date" class="form-control" id="enddate" name="enddate">
+    </div>
+    <div class="form-group">
+      <label for='type'>Education level  </label><br>
+        <select formControlName="type" class="form-control" id="type" name="type" >
+          <option value="select">select</option>
+          <option value="High school">high school</option>
+          <option value="BA">bachelor of arts</option>
+          <option value="Bsc">bachelor of science</option>
+          <option value="MA">master of arts</option>
+          <option value="Msc">master of science</option>
+          <option value="Phd">doctorate</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="institution">institution </label><br>
+        <input formControlName="institution" type="text" class="form-control" id="institution" name="institution" >
+      </div>
+      <div class="form-group">
+        <label for="country"> Country  </label><br>
+        <select formControlName="country" class="form-control" id="country" name="country"  >
+          <option>select</option>
+          <option  *ngFor='let country of countries' >{{country['name']}}</option>
+        </select>
+  
+     <br>
+        <button type="submit" class="btn btn-light" >update education</button>
+       
+        </div>
+
+  </form>
+</div>
 <div [class]="displayWork" class="pos p-5">
   <h5 (click)="work()" class="text-right">close</h5>
   <form [formGroup]="workForm" (ngSubmit)="submitWork()">
@@ -165,7 +210,38 @@
 
   </form>
 </div>
+<div [class]="updateWorkClass" class="pos p-5">
+  <h5 (click)="updateWork($event)" class="text-right">close</h5>
+  <form [formGroup]="workForm" (ngSubmit)="submitUpdateWork()">
+    <br>
+   <small>{{messageUpdateWork}}</small>
+   <br>
+   <br>
+    <div class="form-group">
+      <label for="startdate">Start Date </label><br>
+      <input formControlName="startdate" value="" type="date" class="form-control" id="startdate" name="startdate" >
+    </div>
+    <div class="form-group">
+      <label for="enddate">End Date </label><br>
+      <input formControlName="enddate" value="" type="date" class="form-control" id="enddate" name="enddate">
+    </div>
+      <div class="form-group">
+        <label for="workplace">workplace </label><br>
+        <input formControlName="workplace" type="text" class="form-control" id="workplace" name="workplace" >
+      </div>
+      <div class="form-group">
+        <label for="country"> Country  </label><br>
+        <select formControlName="country" class="form-control" id="country" name="country"  >
+          <option>select</option>
+          <option  *ngFor='let country of countries' >{{country['name']}}</option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-light" >update workplace</button>
+       
+        </div>
 
+  </form>
+</div>
 <div class="row justify-content-around">
 <div class=" col-1 p-2">
   <h4 (click)="basicData()" [class]="userType" class="text-center">+</h4>
@@ -217,7 +293,7 @@
             to {{data.endDate}}
           </div>
         </td>
-        <td [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
+        <td (click)="updateEdu($event)"  [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
       </tr>
       <tr *ngFor="let data of _jsonParse">
         <td  scope='col'>worked at {{data.company}} 
@@ -231,7 +307,7 @@
            to {{data.endDate}}
          </div>
       </td>
-      <td [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
+      <td (click)="updateWork($event)" [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
       </tr>
     </tbody>
   

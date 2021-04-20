@@ -151,6 +151,19 @@ followOrUnfollow($event){
   this._UserinfoService.followUser(this.username, user)
      .subscribe((responce)=>{
           if(responce.res === true){
+            if (this.searchText === "followers"){
+              this.followers()
+              console.log("followers updated")
+            }else if
+                 (this.searchText === "following")
+                 { this.following()
+                  console.log("following updated")
+              }else{
+                this.userSearch()
+                console.log("usersearch updated")
+              }
+            
+            
             console.log("works well, database has been updated")
          /*   if (this.search[user][2] === "Follow"){
               this.search[user[2]] ="Following"

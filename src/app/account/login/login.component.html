@@ -4,6 +4,7 @@
 </header>
 <main class="background-color height p-4">
 <div class="container width">
+  <div class="login p-5">
     <form #filterForm="ngForm" (ngSubmit)="onSubmit()">
        <p>
          <small>{{warning}}</small>
@@ -24,6 +25,6 @@
         </p>
         <button type="submit" class="btn btn-light">Submit</button>
       </form>
-      
+    </div>
     </div>
   </main>

@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostsComponent } from './posts/posts.component';
-import { SinglePostComponent } from './single-post/single-post.component';
-import { PostcommentsComponent } from './postcomments/postcomments.component';
-
+import { MainComponent } from './main/main.component';
+import {Routes} from '@angular/router'
+import {RouterModule} from '@angular/router';
+const routes: Routes =[
+  {path: 'home', component: MainComponent
+},
+]
 
 
 @NgModule({
-  declarations: [PostsComponent, SinglePostComponent, PostcommentsComponent],
+  declarations: [MainComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild(routes
+      )
+  ],
+
+  exports: [RouterModule]
 })
 export class HomeModule { }

@@ -17,7 +17,6 @@ import {FormControl, FormGroup, FormArray, FormBuilder} from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  path:string;
   username:string;
   firstname:string;
   lastname:string;
@@ -34,14 +33,19 @@ export class ProfileComponent implements OnInit {
   message: string;
   messageEdu:string;
   messageWork:string;
+  messageUpdateWork:string;
+  messageUpdateEdu:string;
   keys: Array<string>;
-  index: number;
   basic_prof:Object;
   jsonParse: Array<any>
   _jsonParse: Array<any>
   data:string;
   formButtons:string;
   userType:string;
+  updateEduClass:string;
+  updateWorkClass:string;
+  eduId:string;
+  workId:string;
   constructor(private _Router: Router, private fb: FormBuilder, private route: ActivatedRoute,  private _UserinfoService: UserinfoService, private imageFile:AngularFireStorage) { }
 
   ngOnInit(): void {
@@ -55,6 +59,8 @@ export class ProfileComponent implements OnInit {
    this._display="d-none"
    this.displayEdu="d-none"
    this.displayWork="d-none"
+   this.updateEduClass="d-none"
+   this.updateWorkClass="d-none"
    this.countries=allcountry;
    }
     
@@ -84,8 +90,8 @@ export class ProfileComponent implements OnInit {
        console.log("check heree")
        this.basic_prof=responce;
        this.keys=Object.keys(responce)
-       this.index=this.keys.indexOf("res")
-       this.keys.splice(this.index,1)
+       let index=this.keys.indexOf("res")
+       this.keys.splice(index,1)
        this.firstname=responce.firstname;
        this.lastname=responce.lastname;
        console.log(this.lastname)
@@ -118,8 +124,8 @@ export class ProfileComponent implements OnInit {
 }
 
 upload($event){
- this.path=$event.target.files[0];
- this.imageFile.upload(`${this.username}`, this.path)
+ const path=$event.target.files[0];
+ this.imageFile.upload(`${this.username}`, path)
  
 }
 
@@ -148,7 +154,6 @@ edu(){
     this.eduWork()
   }else{
   this.displayEdu="d-none"
- 
 }
 }
 work(){
@@ -161,8 +166,52 @@ work(){
 }
 }
 
+updateEdu($event){
+  this.eduId=$event.target.id
+  if (this.updateEduClass === "d-none"){
+    this.updateEduClass="visible"
+  }else{
+  this.updateEduClass="d-none"
+
+}
+}
+submitUpdateEdu(){
+  console.log(this.eduId)
+  this.usereducation=new education(this.eduForm.value.type,this.eduForm.value.institution, this.eduForm.value.country, this.eduForm.value.startdate, this.eduForm.value.enddate)
+  console.log(this.usereducation)
+  this._UserinfoService.addeducation(this.usereducation, this.username,this.eduId)
+      .subscribe((responce :any)=>{
+        if(responce.res === true){
+          this.messageUpdateEdu=responce.message
+           console.log("edu has been updated")
+        }
+      }
+      )
+  console.log("updateedu is submited")
+}
 
 
+ updateWork($event){
+   this.workId=$event.target.id
+  if (this.updateWorkClass === "d-none"){
+    this.updateWorkClass="visible"
+  }else{
+  this.updateWorkClass="d-none"
+
+}
+ }
+ submitUpdateWork(){
+   console.log(this.workId)
+   this.userworkplace=new work(this.workForm.value.workplace, this.workForm.value.country, this.workForm.value.startdate, this.workForm.value.enddate)
+   this._UserinfoService.addwork(this.userworkplace, this.username, this.workId)
+   .subscribe((responce)=>{
+      if (responce.res === true){  
+         this.messageUpdateWork=responce.message
+        console.log("work has been updated")
+      }
+   })
+  console.log("updatework has been submitted" )
+}
 profileSubmit(){
 this._UserinfoService.updateprofile(this.userprofile, this.username)
 .subscribe((responce:any)=>{
@@ -198,8 +247,9 @@ searchForm=this.fb.group({
 })
 
 submitEdu(){
+  const id = "add"
   this.usereducation=new education(this.eduForm.value.type,this.eduForm.value.institution, this.eduForm.value.country, this.eduForm.value.startdate, this.eduForm.value.enddate)
-  this._UserinfoService.addeducation(this.usereducation, this.username)
+  this._UserinfoService.addeducation(this.usereducation, this.username, id)
       .subscribe((responce :any)=>{
         if(responce.res === true){
           this.messageEdu=responce.message
@@ -210,8 +260,9 @@ submitEdu(){
 }
 
 submitWork(){
+  const id="add"
   this.userworkplace=new work(this.workForm.value.workplace, this.workForm.value.country, this.workForm.value.startdate, this.workForm.value.enddate)
-  this._UserinfoService.addwork(this.userworkplace, this.username)
+  this._UserinfoService.addwork(this.userworkplace, this.username, id)
   .subscribe((responce)=>{
      if (responce.res === true){
        this.messageWork=responce.message

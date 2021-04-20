@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {userData} from './sign';
 import {UserinfoService} from '../userinfo.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private  _UserinfoService : UserinfoService, private _Router:Router) {  }
+  constructor(private route:ActivatedRoute ,private  _UserinfoService : UserinfoService, private _Router:Router) {  }
 
   ngOnInit(): void {
     
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
             this._Router.navigate(['profile/', this.user.username, "myself"])
           }else{
               this.warning="user credentials are not correct"
-              this._Router.navigate(['login'])
+              this._Router.navigate(['login/'])
           }
            
         });

@@ -14,6 +14,9 @@ export class UserinfoService {
   private baseUrl: string=BASE_URL;
 
   constructor(private http: HttpClient) { }
+
+
+  
   logIn(user: userData) : Observable <boolean> {
     return this.http.post<boolean>(`${this.baseUrl}/account/login`, user);
   }
@@ -45,12 +48,12 @@ updateprofile(userProfile:profile, username:string){
   return this.http.post<any>(`${this.baseUrl}/account/updateProfile/${username}`, userProfile);
 }
 
-addeducation(userEdu:education ,username:string){
-  return this.http.post<any>(`${this.baseUrl}/account/addEdu/${username}`, userEdu);
+addeducation(userEdu:education ,username:string, id:string){
+  return this.http.post<any>(`${this.baseUrl}/account/addAndUpdateEdu/${username}/${id}`, userEdu);
 }
 
-addwork(userWork: work, username:string){
-  return this.http.post<any>(`${this.baseUrl}/account/addWork/${username}`, userWork);
+addwork(userWork: work, username:string, id:String){
+  return this.http.post<any>(`${this.baseUrl}/account/addAndUpdateWork/${username}/${id}`, userWork);
 }
 getEducation(username:string){
     return this.http.get<any>(`${this.baseUrl}/account/getEdu/${username}`);
@@ -62,7 +65,6 @@ getWork(username:string){
 searchUser(searchText:string){
   return this.http.get<any>(`${this.baseUrl}/account/search/${searchText}`);
 }
-
 
 getFollowers(username:string){
   return this.http.get<any>(`${this.baseUrl}/account/getFollowers/${username}`);
