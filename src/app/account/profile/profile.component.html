@@ -17,7 +17,7 @@
     </div>
      
       <div class="row justify-content-around">
-<div class="col-4  p-2">
+<div class="col-4  p-2 m-3 ">
 <div  >
   <img class="picture" [src]='profImage' [alt]='username' >
 <label for="myInputFile">
@@ -30,8 +30,8 @@
 <h1>{{ lastname | titlecase}}</h1>
 </div>
 
-<div [class]="userType" class="col-4  p-2  text-center">
-  <button  class="btn but button-width cursor  "><h3> Home</h3></button><br><hr>
+<div [class]="userType" class="col-4  p-2  m-3 text-center">
+  <button (click)="homePage()" class="btn but button-width cursor  "><h3> Home</h3></button><br><hr>
   <button (click)="followers()" class="btn but button-width cursor "> <h3>Followers</h3> </button> <br><hr>
   <button (click)="following()"  class="btn but button-width cursor  "> <h3>Following</h3></button><br><hr>
   <button class="btn but button-width cursor  "><h3> Questions</h3></button>

@@ -1,19 +1,54 @@
-main {
-    background-color: rgb(247, 247, 188);
+
+main{
+    background-color: rgb(245, 255, 158);
     min-height: 650px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-
 .question{
-    background-color: wheat;
+    background-color: lightgoldenrodyellow;
     min-height: 50px;
     border-radius: 10px;
-    box-shadow:   0 0 3px 2px wheat;
+    box-shadow:   0 0 3px 2px rgb(231, 231, 185);
 }
 
+.question:hover{
+    background-color: lightyellow;
+}
 .answer{
-    background-color: wheat;
+    background-color: lightgoldenrodyellow;
     min-height: 200px;
     border-radius: 10px;
-    box-shadow:   0 0 3px 2px wheat;
+    box-shadow:   0 0 3px 2px rgb(231, 231, 185);
+}
+
+.opacity{
+    opacity: 0.3;
+}
+
+
+.pos {
+    border-radius: 5px;
+    position: fixed;
+    left:250px;
+    top:150px;
+    bottom: 100px;
+    right: 250px;
+    background-color:rgb(249, 255, 191);
+    box-shadow:   0 0 3px 2px rgb(236, 236, 195);
+    z-index: 1;
+    overflow: auto;
+}
+
+.but:focus,
+.but:active
+{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.but {
+    border:1px solid wheat;
+}
+.but:hover{
+    background-color: wheat;
 }

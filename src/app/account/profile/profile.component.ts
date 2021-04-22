@@ -284,4 +284,9 @@ following(){
   this._Router.navigate([`search/${this.username}/following`])
   console.log("works following")
 }
+
+homePage(){
+  this._Router.navigate([`home/${this.username}`])
+}
+
 }

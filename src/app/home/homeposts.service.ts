@@ -13,12 +13,12 @@ export class HomepostsService {
 
   constructor(private http: HttpClient) { }
 
-  askQuestion(username:string, data:string) : Observable <boolean> {
-    return this.http.post<boolean>(`${this.baseUrl}/home/askQuestion${username}`, data);
+  askQuestion(username:string, data:string) : Observable <any> {
+    return this.http.post<boolean>(`${this.baseUrl}/home/askQuestion/${username}`, data);
   }
   
 
-  getQuestions(username:string): Observable <boolean>{
+  getQuestions(username:string): Observable <any>{
     return  this.http.get<boolean>(`${this.baseUrl}/home/getQuestions/${username}`);
   }
 

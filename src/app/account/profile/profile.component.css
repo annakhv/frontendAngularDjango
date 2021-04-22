@@ -3,7 +3,7 @@
     border-radius: 10px;
     }
 .background-color{
-    background-color:rgb(204, 36, 31);
+    background-color:rgb(245, 255, 158);
        
     }
 
@@ -22,8 +22,7 @@
 
 
 .container{
-    background-color: rgb(245, 255, 158);
-    box-shadow: 2 2 2 2px rgb(245, 255, 158);
+    box-shadow: 0 0 5px 5px rgb(214, 206, 135);
 }
 
 
@@ -52,12 +51,8 @@
    
 }
 
-.but:focus,
-.but:active
-{
-    outline: none !important;
-    box-shadow: none !important;
-}
+
+
 
 .out{
     border: solid 1px black;

@@ -1,28 +1,47 @@
 
+
+
 <main>
 
-<div class="container p-5 ">
- 
-        <form >
+<div class="container p-4 ">
+  <div class="row justify-content-around">
+      <div class="col-8">
+        <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
             <div class="form-group m-2">
               <label for="question"><h4>Ask Question</h4></label>
-              <input type="text" class="form-control" id="question">
+              <input formControlName="questionText"  type="text" class="form-control" id="question">
               </div>
               <button type="submit" class="btn btn-light m-2">Submit</button>
               </form>
-    
-</div>
+              <div class="pos p-5" [class]="displayAnswerForm">
+              <form [formGroup]="answerForm" (ngSubmit)="submitAnswer()">
+                <h5 (click)="displayAnswerField($event)" class="text-right">close</h5>
+                <div class="form-group m-2">
+                  <label for="question"><h4>Answer this Question</h4></label>
+                  <textarea formControlName="answerText"  rows="5" cols="50" class="form-control" id="question"></textarea>
+                  </div>
+                  <button type="submit" class="btn but m-2">Submit answer</button>
+                  </form>
+                </div>
 
-<div class="container p-5 ">
-<div class="question m-3 p-3">
-   Question
-</div>
+
 <div class="answer m-3 p-3">
     answer
-    <br>
-    <button class="btn btn-light m-2">comments</button>
+ 
 </div>
 </div>
 
 
+<div class="col-4">
+    <h3 class="m-2">Click to answer Question</h3>
+    <div (click)='displayAnswerField($event)' *ngFor='let question of questions'  class="question m-3 p-3 m-2">
+          <div >
+            <h6 [data]="result[question][3]" class="opacity"> by {{result[question][0]}} {{result[question][1]}}</h6>
+            <h5 [data]="result[question][3]"> {{question}}</h5>
+          </div>
+     </div>
+</div>
+</div>
+
+</div>
 </main>
