@@ -16,11 +16,19 @@ main{
 }
 .answer{
     background-color: lightgoldenrodyellow;
-    min-height: 200px;
     border-radius: 10px;
     box-shadow:   0 0 3px 2px rgb(231, 231, 185);
 }
 
+.title{
+    background-color: wheat;
+    border-radius: 5px;
+    border: 2px solid rgb(241, 231, 211);
+}
+
+.title:hover{
+    background-color: rgb(241, 231, 211);
+}
 .opacity{
     opacity: 0.3;
 }
@@ -52,3 +60,4 @@ main{
 .but:hover{
     background-color: wheat;
 }
+

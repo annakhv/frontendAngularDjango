@@ -22,14 +22,14 @@ export class HomepostsService {
     return  this.http.get<boolean>(`${this.baseUrl}/home/getQuestions/${username}`);
   }
 
- answerQuestion(username:string, questionId:string, answer:string): Observable <boolean>{
-    return this.http.post<boolean>(`${this.baseUrl}/home/answerQuestion/${username}${questionId}`, answer);
+ answerQuestion(username:string, questionId:string, answer:string): Observable <any>{
+    return this.http.post<boolean>(`${this.baseUrl}/home/answerQuestion/${username}/${questionId}`, answer);
  }
 
- addComment(username:string,answerId:string, comment:string): Observable <boolean>{
-  return this.http.post<boolean>(`${this.baseUrl}/home/answerQuestion/${username}${answerId}`, comment);
+ addComment(username:string,answerId:string, comment:string): Observable <any>{
+  return this.http.post<boolean>(`${this.baseUrl}/home/answerQuestion/${username}/${answerId}`, comment);
 }
-getAnswersWithComments(username:string): Observable <boolean>{
+getAnswersWithComments(username:string): Observable <any>{
   return  this.http.get<boolean>(`${this.baseUrl}/home/getAnswersAndComments/${username}`);
 
 }
