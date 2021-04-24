@@ -293,7 +293,10 @@
             to {{data.endDate}}
           </div>
         </td>
-        <td (click)="updateEdu($event)"  [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
+        <td>
+        <div (click)="updateEdu($event)"  [class]="userType"><button [data]="data.id" class="btn but">update</button></div>
+        <div (click)="removeEdu($event)"  [class]="userType"><button [data]="data.id" class="btn but">delete</button></div>
+      </td>
       </tr>
     </tbody>
     <tbody *ngIf="_jsonParse">
@@ -304,12 +307,16 @@
         </div>
         <div *ngIf="data.hasOwnProperty('startDate')">
           from  {{data.startDate}}
-         </div>
+        </div>
          <div *ngIf="data.hasOwnProperty('endDate')">
            to {{data.endDate}}
          </div>
       </td>
-      <td (click)="updateWork($event)" [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
+      <td>
+      <div (click)="updateWork($event)" [class]="userType"><button [data]="data.id" class="btn but">update</button>
+      </div>
+      <div (click)="removeWork($event)"  [class]="userType"><button [data]="data.id" class="btn but">delete</button></div>
+    </td>
       </tr>
     </tbody>
   

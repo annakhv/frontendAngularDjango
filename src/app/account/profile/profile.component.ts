@@ -50,7 +50,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
    this.username=this.route.snapshot.paramMap.get('username' )
-   console.log(this.username)
    this.userType=this.route.snapshot.paramMap.get('type' )
    this.profilType(this.userType)
    this.getProfile()
@@ -96,14 +95,13 @@ export class ProfileComponent implements OnInit {
   this._UserinfoService.getProfile(this.username)
   .subscribe((responce: any)=>{
      if(responce.res === true ){
-       console.log("check heree")
        this.basic_prof=responce;
        this.keys=Object.keys(responce)
        let index=this.keys.indexOf("res")
        this.keys.splice(index,1)
        this.firstname=responce.firstname;
        this.lastname=responce.lastname;
-       console.log(this.lastname)
+      
      }
 
   }) 
@@ -114,6 +112,8 @@ export class ProfileComponent implements OnInit {
   .subscribe((responce:any)=>{
     if (responce.res === true){
       this.jsonParse=JSON.parse(responce.json)
+      console.log(this.jsonParse)
+     
 
     }
   }
@@ -125,13 +125,42 @@ export class ProfileComponent implements OnInit {
   .subscribe((responce:any)=>{
     if (responce.res === true){
       this._jsonParse=JSON.parse(responce.json)
-      console.log(this._jsonParse)
+
 
     }
   }
   )
 }
 
+removeWork($event){
+  const id=$event.target.data
+  console.log(id)
+  this._UserinfoService.removeWork(id)
+  .subscribe((responce:any)=>{
+    if (responce.res === true){
+       console.log(responce.message)
+       this.getWork()
+    }else{
+       console.log(responce.message)
+    }
+  }
+  
+  )
+}
+
+removeEdu($event){
+  const id=$event.target.data
+  console.log(id)
+  this._UserinfoService.removeEducation(id)
+  .subscribe((responce:any)=>{
+    if (responce.res === true){
+       console.log(responce.message)
+       this.getEducation()
+    }else{
+       console.log(responce.message)
+    }
+  })
+}
 
 
 basicData(){
@@ -172,7 +201,7 @@ work(){
 }
 
 updateEdu($event){
-  this.eduId=$event.target.id
+  this.eduId=$event.target.data
   if (this.updateEduClass === "d-none"){
     this.updateEduClass="visible"
   }else{
@@ -193,12 +222,13 @@ submitUpdateEdu(){
         }
       }
       )
+ 
   console.log("updateedu is submited")
 }
 
 
  updateWork($event){
-   this.workId=$event.target.id
+   this.workId=$event.target.data
   if (this.updateWorkClass === "d-none"){
     this.updateWorkClass="visible"
   }else{
@@ -209,6 +239,7 @@ submitUpdateEdu(){
  submitUpdateWork(){
    console.log(this.workId)
    this.userworkplace=new work(this.workForm.value.workplace, this.workForm.value.country, this.workForm.value.startdate, this.workForm.value.enddate)
+   this.workForm.reset()
    this._UserinfoService.addwork(this.userworkplace, this.username, this.workId)
    .subscribe((responce)=>{
       if (responce.res === true){  
@@ -258,6 +289,7 @@ searchForm=this.fb.group({
 submitEdu(){
   const id = "add"
   this.usereducation=new education(this.eduForm.value.type,this.eduForm.value.institution, this.eduForm.value.country, this.eduForm.value.startdate, this.eduForm.value.enddate)
+  this.eduForm.reset()
   this._UserinfoService.addeducation(this.usereducation, this.username, id)
       .subscribe((responce :any)=>{
         if(responce.res === true){
@@ -268,7 +300,6 @@ submitEdu(){
       }
       )
 }
-
 submitWork(){
   const id="add"
   this.userworkplace=new work(this.workForm.value.workplace, this.workForm.value.country, this.workForm.value.startdate, this.workForm.value.enddate)

@@ -62,6 +62,13 @@ getEducation(username:string){
 getWork(username:string){
     return this.http.get<any>(`${this.baseUrl}/account/getWork/${username}`);
 }
+
+removeEducation(id:string){
+  return this.http.get<any>(`${this.baseUrl}/account/deleteEdu/${id}`);
+}
+removeWork(id:string){
+  return this.http.get<any>(`${this.baseUrl}/account/deleteWork/${id}`);
+}
 searchUser(searchText:string){
   return this.http.get<any>(`${this.baseUrl}/account/search/${searchText}`);
 }
