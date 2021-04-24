@@ -53,6 +53,9 @@ export class ProfileComponent implements OnInit {
    console.log(this.username)
    this.userType=this.route.snapshot.paramMap.get('type' )
    this.profilType(this.userType)
+   this.getProfile()
+   this.getEducation()
+   this.getWork()
    this.userprofile=new profile('birthdate', "country of origin", "current country", "relationship status")
    this.image(this.username)
    this.display="d-none"
@@ -82,8 +85,14 @@ export class ProfileComponent implements OnInit {
        this.image('blankprofile.png')
     })
  
- 
+  }
+  upload($event){
+    const path=$event.target.files[0];
+    this.imageFile.upload(`${this.username}`, path)
 
+   }
+   
+  getProfile(){
   this._UserinfoService.getProfile(this.username)
   .subscribe((responce: any)=>{
      if(responce.res === true ){
@@ -99,19 +108,19 @@ export class ProfileComponent implements OnInit {
 
   }) 
 
+  }
+  getEducation() {
   this._UserinfoService.getEducation(this.username)
   .subscribe((responce:any)=>{
     if (responce.res === true){
       this.jsonParse=JSON.parse(responce.json)
 
-      
-     
-       
-    
     }
   }
   )
-
+  }
+  
+  getWork(){
   this._UserinfoService.getWork(this.username)
   .subscribe((responce:any)=>{
     if (responce.res === true){
@@ -123,11 +132,7 @@ export class ProfileComponent implements OnInit {
   )
 }
 
-upload($event){
- const path=$event.target.files[0];
- this.imageFile.upload(`${this.username}`, path)
- 
-}
+
 
 basicData(){
   if (this.display === "d-none"){
@@ -183,6 +188,7 @@ submitUpdateEdu(){
       .subscribe((responce :any)=>{
         if(responce.res === true){
           this.messageUpdateEdu=responce.message
+          this.getEducation()
            console.log("edu has been updated")
         }
       }
@@ -207,16 +213,19 @@ submitUpdateEdu(){
    .subscribe((responce)=>{
       if (responce.res === true){  
          this.messageUpdateWork=responce.message
+         this.getWork()
         console.log("work has been updated")
       }
    })
   console.log("updatework has been submitted" )
 }
+
 profileSubmit(){
 this._UserinfoService.updateprofile(this.userprofile, this.username)
 .subscribe((responce:any)=>{
    if (responce.res ===true ){
       this.message=responce.message
+      this.getProfile()
      
    }
 })
@@ -253,6 +262,7 @@ submitEdu(){
       .subscribe((responce :any)=>{
         if(responce.res === true){
           this.messageEdu=responce.message
+          this.getEducation()
       
         }
       }
@@ -266,6 +276,7 @@ submitWork(){
   .subscribe((responce)=>{
      if (responce.res === true){
        this.messageWork=responce.message
+       this.getWork()
        
      }
   })

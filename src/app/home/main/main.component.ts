@@ -17,6 +17,8 @@ export class MainComponent implements OnInit {
    questionForAnswer:string;
    messageSubmitQuestion:string;
    answersObject:Array<any>
+   commentsObject:Array<any>
+   answer_id:string;
   constructor(private _Router: Router, private route: ActivatedRoute,private postsService:HomepostsService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -24,6 +26,7 @@ export class MainComponent implements OnInit {
     this.displayAnswerForm='d-none'
     this.getQuestions()
     this.getAnswers()
+    
   }
 
   questionForm=this.fb.group({
@@ -33,6 +36,10 @@ export class MainComponent implements OnInit {
   answerForm=this.fb.group({
     answerText:new FormControl("")
   })
+
+ commentForm=this.fb.group({
+    commentText:new FormControl("")
+ })
 
 
 submitQuestion(){
@@ -52,11 +59,10 @@ submitQuestion(){
 
 }
 getAnswers(){
-  this.postsService.getAnswersWithComments(this.username)
+  this.postsService.getAnswers(this.username)
   .subscribe((responce=>{
      if(responce.res === true){
        this.answersObject =responce.json
-       console.log(this.answersObject)
      }
   }))
 }
@@ -103,5 +109,40 @@ displayAnswerField($event){
     this.displayAnswerForm="d-none"
   }
 
+  }
+
+  submitComment($event){
+    const answerId=$event.target.data
+    const comment=this.commentForm.value
+    this.commentForm.reset()
+    this.postsService.addComment(this.username, answerId, comment)
+    .subscribe((responce:any)=>{
+      if(responce.res ===true){
+        console.log(responce.message)
+      }
+    }
+    )
+  }
+  
+  getComments($event){
+    this.commentsObject=[]
+     const answerId=$event.target.data
+     console.log(answerId)
+     this.postsService.getComments( answerId, this.username)
+     .subscribe((responce)=>{
+        if(responce.res === true){
+          this.commentsObject =JSON.parse(responce.json)
+          console.log(this.commentsObject)
+          this.answer_id=answerId
+     }else{
+          this.answer_id=answerId
+     }
+     });
+    }
+  
+
+
+  upVote($event){
+    console.log($event.target.data)
   }
 }

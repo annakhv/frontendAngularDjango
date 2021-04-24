@@ -11,7 +11,7 @@
               <label for="question"><h4>Ask Question</h4></label>
               <input formControlName="questionText"  type="text" class="form-control" id="question">
               </div>
-              <button type="submit" class="btn btn-light m-2">Submit</button>
+              <button type="submit" class="btn but1 m-2">Submit</button>
               </form>
               <div class="pos p-5" [class]="displayAnswerForm">
               <form [formGroup]="answerForm" (ngSubmit)="submitAnswer()">
@@ -30,14 +30,45 @@
   <div class="title  p-2 opacity" [id]='object.questionId'>
   Question: {{object.question}}<br>
     <div >
-       answer by {{object.firstname}}  {{object.lastname}}  
+       answer by {{object.firstname}}  {{object.lastname}} {{object.date}} 
     </div>
 
   </div>
- <div [id]='object.answerId'>
+ <div>
     <hr>
    <h6>{{object.answer}}</h6> 
+  <hr>
+  <div class="container">
+    <div class="row justify-content-left">
+  <div (click)=getComments($event) [data]='object.answerId' class="col-4 title p-2 text-center">
+     Comments
+  </div>
+  <div (click)=upVote($event) [data]='object.answerId' class="col-2 title p-2 text-center">
+     upVote 
+  </div>
+</div>
+<div class="col" *ngIf='object.answerId === answer_id'>
+<div *ngFor='let info of commentsObject' >
+  <hr>
+  <div class="comment p-2">
+  <h6 class="opacity">{{info.firstname}}  {{info.lastname}} {{info.date}}</h6>
+     {{info.comment}}
+    </div>
+</div>
+<div class="addcomment m-2">
+  <form [formGroup]="commentForm" [data]='object.answerId' (ngSubmit)="submitComment($event)">
+    <div class="form-group m-2">
+      <label for="comment">add comment</label>
+      <input formControlName="commentText"  type="text" class="form-control" id="comment">
+      </div>
+      <button type="submit" class="btn but m-2">Submit</button>
+      </form>
+</div>
+</div>
+
+</div>
  </div>
+ 
 </div>
 </div>
 

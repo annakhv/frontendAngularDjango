@@ -17,7 +17,6 @@ export class HomepostsService {
     return this.http.post<boolean>(`${this.baseUrl}/home/askQuestion/${username}`, data);
   }
   
-
   getQuestions(username:string): Observable <any>{
     return  this.http.get<boolean>(`${this.baseUrl}/home/getQuestions/${username}`);
   }
@@ -27,10 +26,14 @@ export class HomepostsService {
  }
 
  addComment(username:string,answerId:string, comment:string): Observable <any>{
-  return this.http.post<boolean>(`${this.baseUrl}/home/answerQuestion/${username}/${answerId}`, comment);
+  return this.http.post<boolean>(`${this.baseUrl}/home/addComment/${username}/${answerId}`, comment);
 }
-getAnswersWithComments(username:string): Observable <any>{
-  return  this.http.get<boolean>(`${this.baseUrl}/home/getAnswersAndComments/${username}`);
+getAnswers(username:string): Observable <any>{
+  return  this.http.get<boolean>(`${this.baseUrl}/home/getAnswers/${username}`);
 
+}
+
+getComments(answer_id:string, username:string): Observable <any>{
+  return this.http.get<boolean>(`${this.baseUrl}/home/getComment/${username}/${answer_id}`)
 }
 }

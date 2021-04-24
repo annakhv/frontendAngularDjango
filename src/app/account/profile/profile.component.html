@@ -295,6 +295,8 @@
         </td>
         <td (click)="updateEdu($event)"  [class]="userType"><button [id]="data.id" class="btn but">update</button></td>
       </tr>
+    </tbody>
+    <tbody *ngIf="_jsonParse">
       <tr *ngFor="let data of _jsonParse">
         <td  scope='col'>worked at {{data.company}} 
           <div *ngIf="data.hasOwnProperty('country')">
