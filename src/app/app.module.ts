@@ -11,17 +11,20 @@ import { TokeninterceptorService } from './account/tokeninterceptor.service';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import { LoginComponent } from './account/login/login.component';
+import { ActivityModule } from  './activity/activity.module'
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AccountModule,
     HomeModule,
+    ActivityModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyBaKeoZcSUKTmfiwD2cWvo2oPKcHPfdJhY",
     authDomain: "angularproject-c870d.firebaseapp.com",

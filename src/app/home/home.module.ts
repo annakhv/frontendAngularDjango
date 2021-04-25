@@ -4,6 +4,8 @@ import { MainComponent } from './main/main.component';
 import {Routes} from '@angular/router'
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+
 const routes: Routes =[
   {path: '', redirectTo:'home/:username', pathMatch:'full'},
   {path: 'home/:username', component: MainComponent

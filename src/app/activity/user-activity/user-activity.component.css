@@ -1,0 +1,33 @@
+
+.background-color{
+    background-color: rgb(235, 253, 130);
+}
+
+.font{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+
+.height {
+    min-height: 800px;
+    border-radius: 10px;
+    }
+
+.item{
+    background-color: rgb(243, 243, 190);
+    min-height: 50px;
+    border-radius: 10px;
+}
+
+.item:hover{
+    background-color: rgb(247, 247, 194);
+}
+
+.detail{
+    background-color: wheat;
+    opacity: 0.6;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+

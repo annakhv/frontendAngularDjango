@@ -330,5 +330,7 @@ following(){
 homePage(){
   this._Router.navigate([`home/${this.username}`])
 }
-
+activity(){
+  this._Router.navigate([`personalActivity/${this.username}`])
+}
 }

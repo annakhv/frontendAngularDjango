@@ -96,7 +96,6 @@ submitAnswer(){
 
 displayAnswerField($event){
   this.questionId=$event.target.data
-  const classVisible=$event.target
   for (let index in this.questions){
      if (this.result[this.questions[index]][3] ===this.questionId){
        this.questionForAnswer=this.questions[index]
@@ -105,12 +104,15 @@ displayAnswerField($event){
   }
   if (this.displayAnswerForm === "d-none"){
     this.displayAnswerForm ="visible"
-  }else{
-    this.displayAnswerForm="d-none"
+  }
   }
 
-  }
 
+  close(){
+    if(this.displayAnswerForm === 'visible'){
+      this.displayAnswerForm ='d-none'
+    }
+  }
   submitComment($event){
     const answerId=$event.target.data
     const comment=this.commentForm.value
