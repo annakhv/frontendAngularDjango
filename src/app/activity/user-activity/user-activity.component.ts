@@ -32,15 +32,15 @@ getActivity(){
    )
 }
 
-removeQuestion($event){
+removeQuestion($event){  //not implemented for now
   console.log($event.target.data)
 }
 
-removeAnswer($event){
+removeAnswer($event){//not implemented for now
   console.log($event.target.data)
 }
 
-removeComment($event){
+removeComment($event){//not implemented for now
   console.log($event.target.data)
 }
 }

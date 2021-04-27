@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Output, EventEmitter} from '@angular/core';
 import {FormControl, FormGroup, FormArray, FormBuilder} from '@angular/forms';
 import {HomepostsService} from '../homeposts.service'
 import {ActivatedRoute, Router} from '@angular/router';
@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
    answersObject:Array<any>
    commentsObject:Array<any>
    answer_id:string;
+   @Output() childData=new EventEmitter()
   constructor(private _Router: Router, private route: ActivatedRoute,private postsService:HomepostsService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -26,6 +27,8 @@ export class MainComponent implements OnInit {
     this.displayAnswerForm='d-none'
     this.getQuestions()
     this.getAnswers()
+    this.childData.emit("hello world")
+   
     
   }
 
@@ -147,4 +150,6 @@ displayAnswerField($event){
   upVote($event){
     console.log($event.target.data)
   }
+
+  
 }

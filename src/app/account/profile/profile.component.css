@@ -1,6 +1,6 @@
 .height {
     min-height: 800px;
-    border-radius: 10px;
+   
     }
 .background-color{
     background-color:rgb(245, 255, 158);
@@ -22,7 +22,8 @@
 
 
 .container{
-    box-shadow: 0 0 5px 5px rgb(214, 206, 135);
+    box-shadow: 0 0 2px 2px rgb(214, 206, 135);
+   
 }
 
 

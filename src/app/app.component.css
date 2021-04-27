@@ -1,0 +1,49 @@
+header{
+    background-color: rgb(245, 255, 158);
+    padding: 10px;
+    border-bottom:1px solid rgb(224, 224, 160);  
+}
+
+.but:focus,
+.but:active
+{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.but {
+   background-color: rgb(234, 241, 170);
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+}
+.but:hover{
+    background-color: rgb(227, 235, 156);
+}
+.menu{
+    position: absolute;
+    width:120px;
+    right: 60px;
+    background-color:rgb(240, 247, 178);
+    border-radius: 5px;
+    padding:10px;
+    margin:10px;
+    z-index: 1;
+    
+}
+
+ul{
+    list-style:none
+}
+
+a{
+   color: black;
+   text-decoration: none;
+}
+
+.item{
+    border-radius: 2px;
+}
+.item:hover{
+    background-color: rgb(232, 241, 148);
+}

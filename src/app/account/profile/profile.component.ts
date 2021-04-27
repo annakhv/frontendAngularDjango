@@ -112,7 +112,7 @@ export class ProfileComponent implements OnInit {
   .subscribe((responce:any)=>{
     if (responce.res === true){
       this.jsonParse=JSON.parse(responce.json)
-      console.log(this.jsonParse)
+      
      
 
     }
@@ -327,9 +327,7 @@ following(){
   console.log("works following")
 }
 
-homePage(){
-  this._Router.navigate([`home/${this.username}`])
-}
+
 activity(){
   this._Router.navigate([`personalActivity/${this.username}`])
 }

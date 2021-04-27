@@ -12,6 +12,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import { LoginComponent } from './account/login/login.component';
 import { ActivityModule } from  './activity/activity.module'
+import { MainComponent } from './home/main/main.component';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { ActivityModule } from  './activity/activity.module'
     AngularFireStorageModule,
   
   ],
-  providers: [UserinfoService, LoginComponent, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokeninterceptorService, multi: true}],
+  providers: [MainComponent,UserinfoService, LoginComponent, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokeninterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

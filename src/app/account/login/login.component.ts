@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {userData} from './sign';
 import {UserinfoService} from '../userinfo.service';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -18,24 +18,26 @@ export class LoginComponent implements OnInit {
   }
   public user=new userData('username', 'password', false);
   warning: string;
+ 
   
   onSubmit() {
       this._UserinfoService.logIn(this.user)
         .subscribe((responce: any) =>{
           if(responce.res === true){
            localStorage.setItem('token', responce.token)
-            this._Router.navigate(['profile/', this.user.username, "myself"])
+           this._Router.navigate(['home/', this.user.username])
           }else{
               this.warning="user credentials are not correct"
-              this._Router.navigate(['login/'])
+              this._Router.navigate(['login/' ])
           }
            
         });
 
+        
+
   }
 
 
-  
  
 }
 

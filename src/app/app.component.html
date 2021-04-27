@@ -1,4 +1,15 @@
 
+<header>
+  <div class="dropdown text-right">
+    <button   (click)="toggle()" class="btn but"> . . . 
+    </button>
+     <ul  [class]="dropdown" class="menu text-center">
+      <li class="item"><a (click)="toggle()" [routerLink]="['profile', username, 'myself']">Profile</a></li>
+      <li class="item"><a (click)="toggle()" [routerLink]="['home', username]">Home</a></li>
+      <li class="item"><a (click)="toggle()"[routerLink]="['h', username]">Log out</a></li>
+    </ul>
+  </div>
+</header>
 
-
-<router-outlet></router-outlet>
+<router-outlet (activate)="onActivate($event)">
+</router-outlet>
