@@ -46,12 +46,13 @@ export class ProfileComponent implements OnInit {
   updateWorkClass:string;
   eduId:string;
   workId:string;
+  searcher:string;
   constructor(private _Router: Router, private fb: FormBuilder, private route: ActivatedRoute,  private _UserinfoService: UserinfoService, private imageFile:AngularFireStorage) { }
 
   ngOnInit(): void {
    this.username=this.route.snapshot.paramMap.get('username' )
-   this.userType=this.route.snapshot.paramMap.get('type' )
-   this.profilType(this.userType)
+   this.searcher=this.route.snapshot.paramMap.get('searcher' )
+   this.profilType(this.searcher)
    this.getProfile()
    this.getEducation()
    this.getWork()
@@ -66,8 +67,8 @@ export class ProfileComponent implements OnInit {
    this.countries=allcountry;
    }
     
-   profilType(type){   //this is to differentiate whether user sees his own profile or other user's profile
-     if (type === "myself"){
+   profilType(searcher){   //this is to differentiate whether user sees his own profile or other user's profile
+     if (searcher === this.username){
         this.userType="visible"
      }else{
         this.userType ="d-none"
@@ -314,16 +315,16 @@ submitWork(){
 }
 
 submitSearch() {
-  this._Router.navigate([`search/${this.username}/${this.searchForm.value.searchText}`])
+  this._Router.navigate([`search/${this.username}/${this.searcher}/${this.searchForm.value.searchText}`])
 }
 
 followers(){
-  this._Router.navigate([`search/${this.username}/followers`])
+  this._Router.navigate([`search/${this.username}/${this.searcher}/followers`])
   console.log("works followers")
 }
 
 following(){
-  this._Router.navigate([`search/${this.username}/following`])
+  this._Router.navigate([`search/${this.username}/${this.searcher}/following`])
   console.log("works following")
 }
 

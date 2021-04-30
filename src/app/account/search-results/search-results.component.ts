@@ -16,6 +16,7 @@ export class SearchResultsComponent implements OnInit {
   search:any;
   usernames:Array<string>;
   username:string;
+  searcher:string;
   profImage:string;
   message:string;
   connections:string;
@@ -25,7 +26,7 @@ export class SearchResultsComponent implements OnInit {
     this.connections="Follow"
     this.searchText=this.route.snapshot.paramMap.get('searchtext' )
     this.username=this.route.snapshot.paramMap.get('username' )
-   
+    this.searcher=this.route.snapshot.paramMap.get('searcher')
 
     if (this.searchText ==="followers" ){
        this.followers()
@@ -118,13 +119,14 @@ export class SearchResultsComponent implements OnInit {
 
 viewProfile($event){
   const user=$event.target.data
-  this._Router.navigate(['profile/', user, "other"])
+  console.log(this.username)
+  this._Router.navigate(['profile/', user, this.username])
   console.log("profileee vieww")
 }
 
 
 checkUsernames(usernames){
-  this._UserinfoService.getFollowing(this.username)
+  this._UserinfoService.getFollowing(this.searcher)
   .subscribe((responce)=>{
     if (responce.res === true){
       const results=JSON.parse(responce.json)

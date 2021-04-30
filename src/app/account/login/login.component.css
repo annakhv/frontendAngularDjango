@@ -4,10 +4,10 @@
     width: 40%;
 }
 
-
 .height {
-min-height: 600px;
-}
+    min-height: 520px;
+    }
+
 .background-color{
    background-color: rgb(245, 255, 158);
 }

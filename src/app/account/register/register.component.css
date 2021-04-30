@@ -4,12 +4,14 @@
     width: 40%;
 }
 
-
+.pad-top{
+    padding-top: 100px;
+}
 .height {
 min-height: 600px;
 }
 .background-color{
-    background-color: rgb(35, 233, 101);
+    background-color: rgb(244, 252, 175);
 }
 
 .font {

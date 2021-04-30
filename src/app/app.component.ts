@@ -40,6 +40,7 @@ export class AppComponent  {
           localStorage.removeItem('token')
         }else{
           "something is wrong"
+          localStorage.removeItem('token')
         }
      })
      

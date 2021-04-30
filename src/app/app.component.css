@@ -1,16 +1,23 @@
 header{
     background-color: rgb(245, 255, 158);
+    font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 10px;
     border-bottom:1px solid rgb(224, 224, 160);  
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:1;
 }
 
+.but1:focus,
+.but1:active,
 .but:focus,
 .but:active
 {
     outline: none !important;
     box-shadow: none !important;
 }
+
 
 .but {
    background-color: rgb(234, 241, 170);
@@ -19,11 +26,21 @@ header{
     border-radius: 50%;
  
 }
+
+.but1{
+    background-color: rgb(234, 241, 170);
+    height: 45px;
+    width: 100px;
+    border-radius: 50px;
+    
+}
+
+.but1:hover,
 .but:hover{
     background-color: rgb(227, 235, 156);
 }
 .menu{
-    position: absolute;
+    position: fixed;
     width:120px;
     right: 60px;
     background-color:rgb(240, 247, 178);

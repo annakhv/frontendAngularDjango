@@ -1,5 +1,6 @@
 
 main{
+    padding-top: 70px;
     background-color: rgb(245, 255, 158);
     min-height: 650px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -9,6 +10,7 @@ main{
     min-height: 50px;
     border-radius: 10px;
     box-shadow:   0 0 3px 2px rgb(231, 231, 185);
+    cursor: pointer;
 }
 
 .question:hover{
@@ -29,6 +31,7 @@ main{
     background-color: wheat;
     border-radius: 5px;
     border: 2px solid lightgoldenrodyellow;
+    cursor:pointer;
 }
 
 .title:hover{

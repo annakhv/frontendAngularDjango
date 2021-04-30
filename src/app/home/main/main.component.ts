@@ -161,7 +161,7 @@ displayAnswerField($event){
   }
 goProfile($event){
   const id=$event.target.data
-  this._Router.navigate(["profile/", id, "other"])
+  this._Router.navigate(["profile/", id, this.username])
 
 }
   
