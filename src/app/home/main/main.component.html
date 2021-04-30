@@ -1,7 +1,7 @@
 
 <main>
 <div class="container p-4 ">
-  <div class="row justify-content-around">
+  <div class="row justify-content-between">
       <div class="col-8">
         <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
             <div class="form-group m-2">
@@ -26,8 +26,8 @@
 <div  *ngFor='let object of answersObject' class="answer m-3 p-3">
   <div class="title  p-2 opacity" [id]='object.questionId'>
   Question: {{object.question}}<br>
-    <div >
-       answer by {{object.firstname}}  {{object.lastname}} {{object.date}} 
+    <div>
+       answer by <button (click)="goProfile($event)" [data]="object.username" class="btn nameBut">{{object.firstname}}  {{object.lastname}} </button> {{object.date}} 
     </div>
 
   </div>
@@ -40,8 +40,16 @@
   <div (click)=getComments($event) [data]='object.answerId' class="col-4 title p-2 text-center">
      Comments
   </div>
-  <div (click)=upVote($event) [data]='object.answerId' class="col-2 title p-2 text-center">
-     upVote 
+  <div  [ngClass]="{'upVoted': object.thisUserUpVotedAnswer}" (click)=upVote($event) [data]='object.answerId' class="col-2 title p-2 text-center">
+        <div  [data]='object.answerId' *ngIf="object.thisUserUpVotedAnswer; else elseBlock" >
+
+    upVoted | {{object.upVotes }}
+  
+        </div>      
+        <ng-template #elseBlock >
+          upVotes | {{object.upVotes }}
+    </ng-template>
+           
   </div>
 </div>
 <div class="col" *ngIf='object.answerId === answer_id'>

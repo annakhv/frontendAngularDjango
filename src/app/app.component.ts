@@ -1,7 +1,7 @@
 
-import { Component ,  ViewChild, AfterViewInit} from '@angular/core';
-
-
+import { Component } from '@angular/core';
+import {UserinfoService} from './account/userinfo.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { Component ,  ViewChild, AfterViewInit} from '@angular/core';
 
 
 export class AppComponent  {
-  constructor( ){}
+  constructor(private router: Router, private userInfo:UserinfoService ){}
   title = 'newform';
   dropdown='d-none';
   username:string;
@@ -33,7 +33,18 @@ export class AppComponent  {
     }
   }
 
-
+  logOut(){
+     this.userInfo.loggedOut(this.username)
+     .subscribe((responce:any)=>{
+        if (responce.res === true){
+          localStorage.removeItem('token')
+        }else{
+          "something is wrong"
+        }
+     })
+     
+    
+  }
 
  
 }

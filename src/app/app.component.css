@@ -2,6 +2,7 @@ header{
     background-color: rgb(245, 255, 158);
     padding: 10px;
     border-bottom:1px solid rgb(224, 224, 160);  
+    position: relative;
 }
 
 .but:focus,
@@ -16,6 +17,7 @@ header{
     height: 55px;
     width: 55px;
     border-radius: 50%;
+ 
 }
 .but:hover{
     background-color: rgb(227, 235, 156);

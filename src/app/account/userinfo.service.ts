@@ -40,6 +40,11 @@ export class UserinfoService {
 loggedIn(){
   return !!localStorage.getItem('token')
 }
+
+loggedOut(username:string){
+  return this.http.get<any>(`${this.baseUrl}/account/logout/${username}`);
+  
+}
 getProfile(username: string) : Observable <any> {
   return this.http.get<any>(`${this.baseUrl}/account/profile/${username}`);
 }

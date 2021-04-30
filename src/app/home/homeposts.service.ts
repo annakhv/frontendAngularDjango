@@ -36,4 +36,8 @@ getAnswers(username:string): Observable <any>{
 getComments(answer_id:string, username:string): Observable <any>{
   return this.http.get<boolean>(`${this.baseUrl}/home/getComment/${username}/${answer_id}`)
 }
+
+upVoteAnswer(answer_id:string, username:string):Observable <any>{
+  return this.http.get<boolean>(`${this.baseUrl}/home/upVoteAnswer/${username}/${answer_id}`)
+}
 }

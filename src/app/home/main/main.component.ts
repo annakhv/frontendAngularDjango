@@ -148,8 +148,21 @@ displayAnswerField($event){
 
 
   upVote($event){
+    console.log($event.target)
     console.log($event.target.data)
+    const answer_id=$event.target.data
+    this.postsService.upVoteAnswer(answer_id, this.username)
+    .subscribe((responce:any)=>{
+      if (responce.res=== true ){
+        this.getAnswers()
+         
+      }
+    })
   }
+goProfile($event){
+  const id=$event.target.data
+  this._Router.navigate(["profile/", id, "other"])
 
+}
   
 }

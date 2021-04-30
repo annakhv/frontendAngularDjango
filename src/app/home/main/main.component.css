@@ -34,6 +34,11 @@ main{
 .title:hover{
     background-color: rgb(241, 231, 211);
 }
+
+.upVoted{
+    background-color: rgb(241, 231, 211);
+}
+
 .opacity{
     opacity: 0.3;
 }
@@ -76,10 +81,23 @@ main{
    
 }
 
+
 .but1:focus,
 .but1:active
 {
     outline: none !important;
     box-shadow: none !important;
 }
+.nameBut:focus,
+.nameBut:active
+{
+    outline: none !important;
+    box-shadow: none !important;
+}
+.nameBut{
+    color:rgb(133, 24, 24);
+}
 
+.nameBut:hover{
+    color: rgb(209, 5, 5);
+}
