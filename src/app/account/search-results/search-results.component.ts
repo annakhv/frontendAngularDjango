@@ -120,7 +120,7 @@ export class SearchResultsComponent implements OnInit {
 viewProfile($event){
   const user=$event.target.data
   console.log(this.username)
-  this._Router.navigate(['profile/', user, this.username])
+  this._Router.navigate(['profile/', user, this.searcher])
   console.log("profileee vieww")
 }
 
@@ -150,7 +150,7 @@ checkUsernames(usernames){
 followOrUnfollow($event){
   const user=$event.target.data
 
-  this._UserinfoService.followUser(this.username, user)
+  this._UserinfoService.followUser(this.searcher, user)
      .subscribe((responce)=>{
           if(responce.res === true){
             if (this.searchText === "followers"){

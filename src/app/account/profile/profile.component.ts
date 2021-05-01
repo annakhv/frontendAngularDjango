@@ -42,11 +42,13 @@ export class ProfileComponent implements OnInit {
   data:string;
   formButtons:string;
   userType:string;
+  userType1:string;
   updateEduClass:string;
   updateWorkClass:string;
   eduId:string;
   workId:string;
   searcher:string;
+  ifUserFollows:boolean;
   constructor(private _Router: Router, private fb: FormBuilder, private route: ActivatedRoute,  private _UserinfoService: UserinfoService, private imageFile:AngularFireStorage) { }
 
   ngOnInit(): void {
@@ -56,6 +58,7 @@ export class ProfileComponent implements OnInit {
    this.getProfile()
    this.getEducation()
    this.getWork()
+   this.ifFollows()
    this.userprofile=new profile('birthdate', "country of origin", "current country", "relationship status")
    this.image(this.username)
    this.display="d-none"
@@ -70,8 +73,10 @@ export class ProfileComponent implements OnInit {
    profilType(searcher){   //this is to differentiate whether user sees his own profile or other user's profile
      if (searcher === this.username){
         this.userType="visible"
+        this.userType1="d-none"
      }else{
         this.userType ="d-none"
+        this.userType1="visible"
      }
 
    }
@@ -287,6 +292,31 @@ searchForm=this.fb.group({
   searchText:new FormControl("")
 })
 
+
+followUser(){
+  console.log("printprint")
+  this._UserinfoService.followUser(this.searcher, this.username)
+  .subscribe((responce:any)=>{
+    if(responce.res ===true){
+      console.log("followings list has been updated")
+      this.ifFollows()
+    }
+    }
+  )
+}
+
+ifFollows(){
+  this._UserinfoService.getifThisUserfollowsOtherUser(this.searcher, this.username)
+  .subscribe((responce:any)=>{
+    if (responce.following === true){
+      this.ifUserFollows=true;
+        console.log("yes this user follows that user")
+    }else{
+      this.ifUserFollows=false;
+       console.log("no this user doesnt follow ")
+    }
+  })
+}
 submitEdu(){
   const id = "add"
   this.usereducation=new education(this.eduForm.value.type,this.eduForm.value.institution, this.eduForm.value.country, this.eduForm.value.startdate, this.eduForm.value.enddate)

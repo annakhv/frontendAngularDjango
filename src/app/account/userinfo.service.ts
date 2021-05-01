@@ -49,6 +49,9 @@ getProfile(username: string) : Observable <any> {
   return this.http.get<any>(`${this.baseUrl}/account/profile/${username}`);
 }
 
+getifThisUserfollowsOtherUser(thisUsername:string, otherUsername:string ): Observable <any>{
+  return this.http.get<any>(`${this.baseUrl}/account/ifThisUsernameFollows/${thisUsername}/${otherUsername}`);
+}
 updateprofile(userProfile:profile, username:string){
   return this.http.post<any>(`${this.baseUrl}/account/updateProfile/${username}`, userProfile);
 }

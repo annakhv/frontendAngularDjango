@@ -1,8 +1,7 @@
 
 <main class="height background-color  font">
   
-
-    <div class="container rounded p-5" >
+    <div class="container rounded p-3" >
      
       <div >
         <form class="form-inline" [formGroup]=searchForm (ngSubmit)="submitSearch()">
@@ -14,6 +13,14 @@
         <button type="submit" class=" btn but out" >search</button>
       </div>
       </form>
+
+      <div class="col-3">
+           
+      </div>
+
+      <div class="col-3">
+
+      </div>
     </div>
      
       <div class="row justify-content-around">
@@ -24,7 +31,20 @@
     <img  class="margin" src="https://img.icons8.com/ios/50/000000/upload--v1.png" width="30" height="auto" />
     <input (change)='upload($event)' type="file" name="myInputFile" id="myInputFile" style="display:none;" />
   </label>
+   
 </div >
+<div [class]="userType1">
+<button  (click)="followUser()" [ngClass]="{'followed': ifUserFollows}"  class="btn but   cursor "> 
+   <h5 *ngIf="ifUserFollows; else elseBlock" >Following </h5>
+
+<ng-template  #elseBlock>
+  <h5>Follow </h5>
+</ng-template>
+     
+</button> 
+   
+<button  class="btn but  cursor  "> <h5>Send message</h5></button>
+</div>
 <br>
 <h1>{{firstname | titlecase}}</h1>
 <h1>{{ lastname | titlecase}}</h1>
@@ -32,9 +52,9 @@
 
 <div  class="col-4  p-2  m-3 text-center">
   
-  <button (click)="followers()" class="btn but button-width cursor "> <h3>Followers</h3> </button> <br><hr>
-  <button (click)="following()"  class="btn but button-width cursor  "> <h3>Following</h3></button><br><hr>
-  <button (click)="activity()" class="btn but button-width cursor  "><h3> Activity</h3></button>
+  <button (click)="followers()" class="btn but button-width cursor "> <h4>Followers</h4> </button> <br><hr>
+  <button (click)="following()"  class="btn but button-width cursor  "> <h4>Following</h4></button><br><hr>
+  <button (click)="activity()" class="btn but button-width cursor  "><h4> Activity</h4></button>
   
 </div>
 

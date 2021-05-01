@@ -55,6 +55,10 @@ main{
    
 }
 
+.followed{
+    background-color: rgb(240, 253, 123);   
+}
+
 .but:focus,
 .but:active
 {

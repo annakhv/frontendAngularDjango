@@ -2,14 +2,16 @@
 <header >
 
   <div class=" dropdown text-right">
-    <button   [routerLink]="['profile', username, username]" class="btn but1 p-2 "> Profile
+    <button   [routerLink]="['home', username]" class="btn but1 p-2 mr-2 "> Home
+    </button>
+    <button   [routerLink]="['profile', username, username]" class="btn but1 p-2  "> Profile
     </button>
 
     <button   (click)="toggle()" class="btn but ml-3 mr-3 "> . . . 
     </button>
      <ul  [class]="dropdown" class="menu text-center">
       <li class="item"><a (click)="toggle()" [routerLink]="">Message Box</a></li>
-      <li class="item"><a (click)="toggle()" [routerLink]="['home', username]">Home</a></li>
+
       <li class="item"><a (click)="toggle();logOut()"  [routerLink]="['login/']">Log out</a></li>
     </ul>
 
