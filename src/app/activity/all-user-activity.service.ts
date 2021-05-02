@@ -15,5 +15,7 @@ export class AllUserActivityService {
   getALLActivity(username:string):Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/activity/personalActivity/${username}`);
   }
-
+  getActiveUsers(username:string):Observable <any>{
+    return this.http.get<any>(`${this.baseUrl}/activity/activeUsers/${username}`);
+  }
 }

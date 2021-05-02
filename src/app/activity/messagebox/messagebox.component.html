@@ -1,0 +1,23 @@
+<div class="background-color height pad-top font">
+<div class="container">
+<div class="row justify-content-between">
+<div class="col-3">
+  <h4 class="text-center">active users </h4>
+  <div>{{message}}</div>
+  <div *ngFor="let obj of userList" class="user" (click)="sendMessage($event)">
+      <div [data]='obj.username'>
+    {{obj.firstname}}
+     {{obj.lastname}}
+    </div>
+  </div>
+
+
+</div>
+
+<div class="col-7">
+  <h4 class="text-center">messages</h4>
+</div>
+</div>
+</div>
+
+</div>

@@ -14,7 +14,6 @@ export class UserActivityComponent implements OnInit {
  
 
   ngOnInit(): void {
-    console.log("printprint")
     this.username=this.route.snapshot.paramMap.get('username')
     console.log(this.username)
     this.getActivity()

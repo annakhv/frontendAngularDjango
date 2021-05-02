@@ -1,0 +1,24 @@
+.pad-top{
+    padding-top: 100px;
+}
+.height {
+min-height: 700px;
+}
+.background-color{
+    background-color: rgb(244, 252, 175);
+}
+
+.font {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.user{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin:10px;
+    padding:10px;
+}
+
+.user:hover{
+    background-color: rgb(178, 218, 194);
+}

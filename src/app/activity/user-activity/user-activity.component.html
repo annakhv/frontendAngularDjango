@@ -3,7 +3,7 @@
 <div class="container p-5 font ">
    <div class="row">
    <div class="col-11" *ngIf="info">
-   <div *ngFor="let data of info"class="item">
+   <div *ngFor="let data of info" class="item">
     <div (click)="removeQuestion($event)" [data]='data.id' *ngIf="data.hasOwnProperty('question')" class="question m-2 p-3">
        <div class="detail">
         {{data.date}} <br>
