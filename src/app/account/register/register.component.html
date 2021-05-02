@@ -3,40 +3,55 @@
 
 <main class="background-color height pad-top " >
 
-  <h2 class="text-center font">Join to our Community</h2>
+  <h2 class="text-center font">Join  our Community</h2>
 
-<div class="container width" >
-<form #filterForm="ngForm" (ngSubmit)="submitRegister()">
-  <div class="form-group">
+<div class="container width pad-bot" >
+<form appEqualValidator #filterForm="ngForm" (ngSubmit)="submitRegister()">
+  {{filterForm.form.valid}}
+  <div  class="form-group">
     <label for="username">Username </label>
-    <input type="text" class="form-control" id="username" name="username" [(ngModel)]="newuser.username">
+    <input type="text" required  #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" id="username" name="username" [(ngModel)]="newuser.username">
+   <small class="text-danger" [class.d-none]="name.valid || name.untouched ">name is required</small>
   </div>
   <div class="form-group">
     <label for="fname">First name </label>
-    <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="newuser.firstname">
+    <input type="text" required #fname="ngModel" [class.is-invalid]="fname.invalid && fname.touched"class="form-control" id="fname" name="fname" [(ngModel)]="newuser.firstname">
+    <small class="text-danger" [class.d-none]="fname.valid || fname.untouched">firstname is required</small>
   </div>
   <div class="form-group">
     <label for="lname">Lastname:</label>
-    <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="newuser.lastname">
+    <input type="text" required #lname="ngModel" [class.is-invalid]="lname.invalid && lname.touched"class="form-control" id="lname" name="lname" [(ngModel)]="newuser.lastname">
+    <small class="text-danger" [class.d-none]="lname.valid || lname.untouched">Lastname is required</small>
   </div>
     <div class="form-group">
       <label for="email">Email address:</label>
-      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newuser.email">
+      <input type="email" required #email="ngModel" pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" [class.is-invalid]="email.invalid && email.touched" class="form-control" id="email" name="email" [(ngModel)]="newuser.email">
+    <div *ngIf="email.errors && (email.invalid || email.touched)">
+        <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
+        <small class="text-danger" *ngIf="email.errors.pattern">Email is not valid</small>
+    </div>
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" name="password" [(ngModel)]="newuser.password">
+      <input type="password" required #pass="ngModel" pattern="^(?=\D*\d).{6,30}$" [class.is-invalid]="pass.invalid && pass.touched" class="form-control" id="pwd" name="password" [(ngModel)]="newuser.password">
+      <div *ngIf="pass.errors && (pass.invalid || pass.touched)">
+        <small class="text-danger" *ngIf="pass.errors.required">password is required</small>
+        <small class="text-danger" *ngIf="pass.errors.pattern">Password should be at least 6 character and contain at least one digit</small>
+      </div>
+     
     </div>
     <div class="form-group">
       <label for="pwdr">Repeat Password:</label>
-      <input type="password" class="form-control" id="pwdr" name="repeatpassword" [(ngModel)]="newuser.repeatpassword">
+      <input type="password" required   [class.is-invalid]="filterForm.errors?.mismatch && filterForm.invalid && filterForm.touched" class="form-control" id="pwdr" name="repeatpassword" [(ngModel)]="newuser.repeatpassword">
+        <small *ngIf="filterForm.errors?.mismatch && (filterForm.invalid && filterForm.touched)"  class="text-danger" >passwords do not match</small>
+                           
     </div>
     <p>
    <small>{{warning}}</small>
     </p>
-    <button type="submit" class="btn btn-light">Submit</button>
+    <button [disabled]="filterForm.form.invalid" type="submit" class="btn btn-light ">Submit</button>
   </form>
 
-</div>
+</div >
 
 </main>

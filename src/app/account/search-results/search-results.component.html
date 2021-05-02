@@ -1,20 +1,25 @@
 
-<div class="background-color">
-   <div class="container height  p-5 font">
-     <h1>{{message}}</h1>
-    <div *ngFor='let username of usernames'  class="row justify-content-around user m-4  p-3">
-      <div class=" col-3">
-        <img class="picture" [src]="search[username][3]" [alt]='picture' >
-      </div >
-      <div class="col-3 text-right">
-      <h4>{{search[username][0] | titlecase }} </h4> 
-      <h4>{{search[username][1]| titlecase }}  </h4> 
-      
-      </div>
-      <div class="col-3">
-         <button (click)="followOrUnfollow($event)"   class="btn"><h5 [data]='username'>{{search[username][2]}}</h5></button><br>
-         <button (click)="viewProfile($event)"  class="btn"><h5 [data]='username'>View Profile</h5></button>
-      </div>
-    </div>
-   </div> 
-</div>
+
+
+  <div class="background-color">
+    <div class="container height  p-5 font">
+      <h1>{{message}}</h1>
+     <div *ngFor='let username of usernames'  class="row justify-content-around user m-4  p-3">
+       <div class=" col-3">
+         <img class="picture" [src]="search[username][3]" [alt]='picture' >
+       </div >
+       <div class="col-3 text-right">
+       <h4>{{search[username][0] | titlecase }} </h4> 
+       <h4>{{search[username][1]| titlecase }}  </h4> 
+       
+       </div>
+       <div class="col-3">
+          <button (click)="followOrUnfollow($event)"   class="btn"><h5 [data]='username'>{{search[username][2]}}</h5></button><br>
+          <button (click)="viewProfile($event)"  class="btn"><h5 [data]='username'>View Profile</h5></button>
+       </div>
+     </div>
+    </div> 
+ </div>
+ 
+
+

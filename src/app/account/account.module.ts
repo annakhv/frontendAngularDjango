@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { EqualValidatorDirective } from './equal-validator.directive';
+
+
 
 const routes: Routes =[
   {path: 'registeruser',component: RegisterComponent
@@ -26,7 +29,7 @@ const routes: Routes =[
 ]
 
 @NgModule({
-  declarations: [ RegisterComponent, LoginComponent, ProfileComponent, UpdateProfileComponent, SearchResultsComponent],
+  declarations: [ RegisterComponent, LoginComponent, ProfileComponent, UpdateProfileComponent, SearchResultsComponent, EqualValidatorDirective],
   imports: [
     CommonModule,
     FormsModule,

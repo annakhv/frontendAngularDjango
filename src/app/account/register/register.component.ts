@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {userRegister} from './signin';
 import {UserinfoService} from '../userinfo.service'
 import {Router} from '@angular/router'
+import {EqualValidatorDirective} from '../equal-validator.directive'
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
    
   }
-  newuser=new userRegister('username', 'firstname', 'lastname', 'example@com', 'password', "password")
+  newuser=new userRegister('username', 'firstname', 'lastname', 'example@mail.com', 'password1', "password1")
   warning:string;
   submitRegister() {
     console.log(this.newuser)

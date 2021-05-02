@@ -15,6 +15,7 @@ import { ActivityModule } from  './activity/activity.module'
 import { MainComponent } from './home/main/main.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { MainComponent } from './home/main/main.component';
     measurementId: "G-9VMTYD91P8"
     }),
     AngularFireStorageModule,
+  
   
   ],
   providers: [MainComponent,UserinfoService, LoginComponent, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokeninterceptorService, multi: true}],
