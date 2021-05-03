@@ -24,8 +24,11 @@
 
 
 <div  *ngFor='let object of answersObject' class="answer m-3 p-3">
-  <div class="title  p-2 opacity" [id]='object.questionId'>
-  Question: {{object.question}}<br>
+  <div   class="title  p-2 opacity" >
+    <div>
+      Question: <button [id]='object.questionId' (click)="thisQuestionAnswers($event)" class="btn nameBut">   {{object.question}}<br></button>
+    </div>
+ 
     <div>
        answer by <button (click)="goProfile($event)" [data]="object.username" class="btn nameBut">{{object.firstname}}  {{object.lastname}} </button> {{object.date}} 
     </div>

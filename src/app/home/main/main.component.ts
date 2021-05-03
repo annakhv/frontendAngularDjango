@@ -96,7 +96,10 @@ submitAnswer(){
   }))
 }
 
-
+thisQuestionAnswers($event){
+  this._Router.navigate(['question/', $event.target.id])
+  
+}
 displayAnswerField($event){
   this.questionId=$event.target.data
   for (let index in this.questions){

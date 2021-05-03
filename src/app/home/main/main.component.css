@@ -1,4 +1,6 @@
 
+
+
 main{
     padding-top: 70px;
     background-color: rgb(245, 255, 158);
@@ -16,12 +18,12 @@ main{
 .question:hover{
     background-color: lightyellow;
 }
+
 .answer{
     background-color:  lightgoldenrodyellow;
     border-radius: 10px;
     box-shadow:   0 0 3px 2px rgb(243, 243, 196);
 }
-
 .comment{
     background-color: wheat;
     border-radius: 5px;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AllUserActivityService } from '../all-user-activity.service';
 import {ActivatedRoute} from '@angular/router';
-
+import {FormControl, FormGroup, FormArray, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-messagebox',
@@ -12,15 +12,21 @@ export class MessageboxComponent implements OnInit {
   username:string;
   userList: Array<any>;
   message:string;
-  constructor(private route: ActivatedRoute, private activity: AllUserActivityService) { }
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private activity: AllUserActivityService) { }
 
   ngOnInit(): void {
     this.username=this.route.snapshot.paramMap.get('username')
     this.activeUsers(this.username)
   }
 
-
+messageForm=this.fb.group({
+  messageText:new FormControl("")
+})
   
+submitMessage(){
+
+}
+
 activeUsers(name){
   this.activity.getActiveUsers(name)
   .subscribe((responce: any)=>{

@@ -1,0 +1,28 @@
+main{
+    padding-top: 100px;
+    background-color: rgb(245, 255, 158);
+    min-height: 650px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.question{
+
+    background-color: lightgoldenrodyellow;
+    min-height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: x-large;
+}
+
+.question:hover{
+    background-color: lightyellow;
+}
+
+.answer{
+    background-color:  lightgoldenrodyellow;
+    border-radius: 10px;
+    box-shadow:   0 0 3px 2px rgb(243, 243, 196);
+}
+
+.opacity{
+    opacity: 0.3;
+}

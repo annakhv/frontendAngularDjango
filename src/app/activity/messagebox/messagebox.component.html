@@ -4,7 +4,7 @@
 <div class="col-3">
   <h4 class="text-center">active users </h4>
   <div>{{message}}</div>
-  <div *ngFor="let obj of userList" class="user" (click)="sendMessage($event)">
+  <div *ngFor="let obj of userList" class="user text-center" (click)="sendMessage($event)">
       <div [data]='obj.username'>
     {{obj.firstname}}
      {{obj.lastname}}
@@ -14,10 +14,24 @@
 
 </div>
 
-<div class="col-7">
+<div class="col-6">
   <h4 class="text-center">messages</h4>
 </div>
+
+<div class="col-3 messages d-none">
+  <div class="messages">
+
+  </div >
+  <form  [formGroup]="messageForm" (ngSubmit)="submitMessage()">
+    <div class="form-group m-2">
+      <label for="message"><h4>send Message</h4></label>
+      <input formControlName="messageText"  type="text" class="form-control" id="message">
+      </div>
+      <button type="submit" class="btn but1 m-2">Submit</button>
+      </form>
 </div>
 </div>
+</div>
+
 
 </div>

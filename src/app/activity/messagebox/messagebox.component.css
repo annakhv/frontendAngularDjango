@@ -22,3 +22,8 @@ min-height: 700px;
 .user:hover{
     background-color: rgb(178, 218, 194);
 }
+
+.messages{
+    background-color: whitesmoke;
+    min-height: 100px;
+}
