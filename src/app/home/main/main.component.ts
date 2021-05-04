@@ -27,8 +27,6 @@ export class MainComponent implements OnInit {
     this.displayAnswerForm='d-none'
     this.getQuestions()
     this.getAnswers()
-    this.childData.emit("hello world")
-   
     
   }
 
@@ -36,9 +34,7 @@ export class MainComponent implements OnInit {
     questionText:new FormControl("")
   })
 
-  answerForm=this.fb.group({
-    answerText:new FormControl("")
-  })
+ 
 
  commentForm=this.fb.group({
     commentText:new FormControl("")
@@ -61,6 +57,7 @@ submitQuestion(){
    }))
 
 }
+
 getAnswers(){
   this.postsService.getAnswers(this.username)
   .subscribe((responce=>{
@@ -84,22 +81,14 @@ getQuestions(){
       ))
 }
 
-submitAnswer(){
-  const answer=this.answerForm.value;
-  this.answerForm.reset()
-  this.postsService.answerQuestion(this.username, this.questionId, answer)
-  .subscribe((responce=>{
-    if (responce.res === true){
-      this.getAnswers()
-       console.log(responce.message)
-    }
-  }))
-}
+
 
 thisQuestionAnswers($event){
-  this._Router.navigate(['question/', $event.target.id])
+  this._Router.navigate(['question/', $event.target.id, this.username])
   
 }
+
+
 displayAnswerField($event){
   this.questionId=$event.target.data
   for (let index in this.questions){
@@ -113,12 +102,19 @@ displayAnswerField($event){
   }
   }
 
+  responceOk($event){
+    console.log($event)
+    this.getAnswers()
+  }
 
+/*
   close(){
     if(this.displayAnswerForm === 'visible'){
       this.displayAnswerForm ='d-none'
     }
   }
+
+*/
   submitComment($event){
     const answerId=$event.target.data
     const comment=this.commentForm.value

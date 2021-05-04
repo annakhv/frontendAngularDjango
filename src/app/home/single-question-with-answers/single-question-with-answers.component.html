@@ -3,22 +3,37 @@
 
 
   <div class="container">
+   
+
       <div class="question p-4 m-4 ">
       <div class=" opacity "> Asked by {{questionInfo.firstname}}  {{questionInfo.lastname}} {{questionInfo.date}} </div> <hr>
-
       {{questionInfo.question}}
+
       </div>
-      <h3>Answers</h3>
-  <div *ngFor="let item of answers" class="answer p-4 m-4">
+      <h3 class="text-right">Answers</h3>
+      
+
+  <div class="row justify-content-around" *ngFor="let item of answers" >
+    <div class="circle col-1 answer p-4 m-2 text-center align-self-center">
+     
+        UpVotes | {{item.upVotes}}
+     
+    </div>
+    <div class="col-10 answer p-4 m-2">
      {{item.answer}}
+     
      <hr>
      <div class="opacity">
      by {{item.firstname}}  {{item.lastname}}  {{item.date}}
     </div>
   </div>
   </div>
+ 
+</div>
 
 
+<div (click)='answerForm($event)' [id]='questionInfo.id'  class=" addAnswer p-4 mt-3 text-center">click to add your answer</div>
+<app-answer-question (answerAdded)="responceOk($event)"  (change)="visibility=$event" [questionId]='questionInfo.id'   [displayAnswerForm]="visibility"  [questionForAnswer]='questionInfo.question'></app-answer-question>
 </main>
 
 

@@ -10,19 +10,29 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./single-question-with-answers.component.css']
 })
 export class SingleQuestionWithAnswersComponent implements OnInit {
-   
+ 
+  visibility:string;
   questionId:string;
   questionInfo:any
   answers : Array<Map<string,string>>
   constructor(private _Router: Router, private route: ActivatedRoute,private postsService:HomepostsService) { }
 
   ngOnInit(): void {
-   
+    this.visibility='d-none'
     this.questionId=this.route.snapshot.paramMap.get('questionId' )
-
     this.getQuestionWithAnswers(this.questionId)
   }
 
+responceOk($event){
+  console.log($event)
+  this.getQuestionWithAnswers(this.questionId)
+}
+
+answerForm($event){
+  console.log(this.visibility)
+  this.visibility='visible'
+  console.log(this.visibility)
+}
 
 
 getQuestionWithAnswers(id){
