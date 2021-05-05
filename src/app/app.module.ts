@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import {AccountModule} from './account/account.module'
 import { AppComponent } from './app.component';
-import {AccountModule} from './account/account.module';
 import {HomeModule} from './home/home.module'
 import { UserinfoService } from './account/userinfo.service';
 import { AuthGuard } from './account/auth.guard';
@@ -11,7 +11,6 @@ import { TokeninterceptorService } from './account/tokeninterceptor.service';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import { LoginComponent } from './account/login/login.component';
-import { ActivityModule } from  './activity/activity.module'
 import { MainComponent } from './home/main/main.component';
 
 
@@ -26,7 +25,6 @@ import { MainComponent } from './home/main/main.component';
     AppRoutingModule,
     AccountModule,
     HomeModule,
-    ActivityModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyBaKeoZcSUKTmfiwD2cWvo2oPKcHPfdJhY",
     authDomain: "angularproject-c870d.firebaseapp.com",

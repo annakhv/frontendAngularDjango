@@ -6,6 +6,7 @@ import {RouterModule} from '@angular/router';
 import { AuthGuard } from '../account/auth.guard';
 import { MessageboxComponent } from './messagebox/messagebox.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MessageFormComponent } from './message-form/message-form.component';
 
 const routes : Routes = [
   {path: 'personalActivity/:username', component:UserActivityComponent, canActivate: [AuthGuard] },
@@ -13,7 +14,7 @@ const routes : Routes = [
 ]
 
 @NgModule({
-  declarations: [UserActivityComponent, MessageboxComponent],
+  declarations: [UserActivityComponent, MessageboxComponent, MessageFormComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 
-const routes: Routes = [];
+const routes: Routes = [
+
+ {path: 'activity', loadChildren: ()=> import ( './activity/activity.module').then (m=> m.ActivityModule)}
+];
 
 @NgModule({
   imports: [

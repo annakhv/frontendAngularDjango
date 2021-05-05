@@ -103,7 +103,7 @@ displayAnswerField($event){
   }
 
   responceOk($event){
-    console.log($event)
+ 
     this.getAnswers()
   }
 

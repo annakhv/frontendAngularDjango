@@ -10,7 +10,7 @@
     <button   (click)="toggle()" class="btn but ml-3 mr-3 "> . . . 
     </button>
      <ul  [class]="dropdown" class="menu text-center">
-      <li class="item"><a (click)="toggle()" [routerLink]="['messageBox', username]">Message Box</a></li>
+      <li class="item"><a (click)="toggle()" [routerLink]="['activity/messageBox', username]">Message Box</a></li>
 
       <li class="item"><a (click)="toggle();logOut()"  [routerLink]="['login/']">Log out</a></li>
     </ul>

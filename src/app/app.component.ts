@@ -20,7 +20,6 @@ export class AppComponent  {
 
   onActivate(ref){
     if(ref.route.component.name === 'MainComponent'){
-    console.log("works")
     this.username=ref.route.snapshot.params['username']
     }
    

@@ -24,14 +24,13 @@ export class SingleQuestionWithAnswersComponent implements OnInit {
   }
 
 responceOk($event){
-  console.log($event)
+ 
   this.getQuestionWithAnswers(this.questionId)
 }
 
 answerForm($event){
-  console.log(this.visibility)
   this.visibility='visible'
-  console.log(this.visibility)
+  
 }
 
 
@@ -41,8 +40,8 @@ getQuestionWithAnswers(id){
     if (responce.res === true){
       this.questionInfo=responce.questionInfo
       this.answers=JSON.parse(responce.json)
-      console.log(this.answers)
-      console.log("print answers to this question")
+  
+    
     }
   })
 

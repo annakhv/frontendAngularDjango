@@ -18,4 +18,23 @@ export class AllUserActivityService {
   getActiveUsers(username:string):Observable <any>{
     return this.http.get<any>(`${this.baseUrl}/activity/activeUsers/${username}`);
   }
+  
+  sendMessage(fromUser:string, toUser:string, message:string):Observable <any> {
+    return this.http.post<any>(`${this.baseUrl}/activity/sendMessage/${fromUser}/${toUser}`, message)
+  }
+
+  inBoxMessages(username:string):Observable <any> {
+    return this.http.get<any>(`${this.baseUrl}/activity/getInbox/${username}`)
+  }
+
+  sentMessages(username:string):Observable <any>{
+    return  this.http.get<any>(`${this.baseUrl}/activity/getSentMessages/${username}`)
+  }
+  deleteMessage(username:string, messageId):Observable <any>{
+    return this.http.get<any>(`${this.baseUrl}/activity/deleteMessage/${username}/${messageId}`)
+  }
+
+  getTheMessage(messageId:string):Observable <any> {
+    return this.http.get<any>(`${this.baseUrl}/activity/singleMessage/${messageId}`)
+  }
 }

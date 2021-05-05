@@ -360,6 +360,6 @@ following(){
 
 
 activity(){
-  this._Router.navigate([`personalActivity/${this.username}`])
+  this._Router.navigate([`activity/personalActivity/${this.username}`])
 }
 }

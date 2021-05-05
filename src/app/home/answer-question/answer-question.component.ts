@@ -41,7 +41,6 @@ export class AnswerQuestionComponent implements OnInit {
     this.postsService.answerQuestion(this.username, this.questionId, answer)
     .subscribe((responce=>{
       if (responce.res === true){
-         console.log(responce.message)
          this.answerAdded.emit(true)
       }
     }))
