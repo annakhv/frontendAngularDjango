@@ -1,1 +1,21 @@
-<p>message-form works!</p>
+
+
+<div>
+
+    <div class="pos p-5" >
+        <form [formGroup]="messageForm" (ngSubmit)="submitMessage()">
+          <h5 (click)="close()"  class="text-right">close</h5>
+          <div class="form-group">
+            <label for="title">Message title</label>
+            <input type="text" class="form-control widthAndHeight" id="title">
+          </div>
+          <div class="form-group m-2">
+            <label for="answer"><h6>Message text</h6></label>
+            <textarea formControlName="messageText" name="messageText" rows="5" cols="50" class="form-control" id="message"></textarea>
+            </div>
+            <button type="submit" class="btn but m-2">Send </button>
+            </form>
+          </div>
+
+
+</div>

@@ -34,7 +34,7 @@
    
 </div >
 <div [class]="userType1">
-<button  (click)="followUser()" [ngClass]="{'followed': ifUserFollows}"  class="btn but   cursor "> 
+<button  (click)="followUser()" [ngClass]="{'followed': ifUserFollows}"  class="btn but  mr-1 cursor "> 
    <h5 *ngIf="ifUserFollows; else elseBlock" >Following </h5>
 
 <ng-template  #elseBlock>

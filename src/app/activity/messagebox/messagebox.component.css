@@ -27,3 +27,46 @@ min-height: 700px;
     background-color: whitesmoke;
     min-height: 100px;
 }
+
+.makeBorder{
+    margin-bottom: 10px;
+    border:1px solid black;
+    overflow:auto;
+}
+.col-4{
+    padding:10px;
+    border:1px solid black;
+    min-height: 500px;
+}
+
+table.table-bordered{
+    border:1px solid black;
+    margin-top:20px;
+  }
+table.table-bordered > thead > tr > th{
+    border:1px solid black;
+}
+table.table-bordered > tbody > tr > td{
+    border:1px solid black;
+}
+
+.spec:hover{
+    text-decoration: underline;
+}
+
+
+
+.but:focus,
+.but:active
+{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.but {
+    border:1px solid rgb(231, 230, 136);
+    width:100px;
+}
+.but:hover{
+    background-color: rgb(245, 255, 158);
+}

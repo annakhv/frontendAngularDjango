@@ -1,36 +1,66 @@
 <div class="background-color height pad-top font">
 <div class="container">
 <div class="row justify-content-between">
-<div class="col-3">
-  <h4 class="text-center">active users </h4>
+
+<div class="col-2">
+  <div class="makeBorder p-3 text-center">
+        Menu <hr>
+        <button class="btn but mb-1">Inbox</button>
+        <br>
+        <button class="btn but">Sent</button>
+  </div>
+  <div class="makeBorder">
+  <h4 class="text-center p-3 ">active users </h4>
   <div>{{message}}</div>
-  <div *ngFor="let obj of userList" class="user text-center" (click)="sendMessage($event)">
-      <div [data]='obj.username'>
+  <div  *ngFor="let obj of userList" class="user text-center " (click)="sendMessage($event)">
+      <div  [data]='obj.username'>
     {{obj.firstname}}
      {{obj.lastname}}
     </div>
   </div>
-
+</div>
 
 </div>
 
-<div class="col-6">
-  <h4 class="text-center">messages</h4>
+<div class="col-10">
+  <h4 class="text-center">Inbox messages</h4>
+  <h5>{{inboxMessage}}</h5>
+
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+    
+        <th class="text-center" scope="col">message title</th>
+        <th class="text-center" scope="col">sender</th>
+        <th class="text-center" scope="col">date</th>
+        <th class="text-center" scope="col">delete message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of inbox">
+
+        <td class="spec text-center" (click)=getSpecificMessage($event) [data]='data.id'>{{data.title}}</td>
+        <td class='text-center'>{{data.firstname}} {{data.lastname}}</td>
+        <td class='text-center'>{{data.date}}</td>
+        <td (click)=delete($event) [data]='data.id' class='spec text-center'>delete</td>
+      </tr>
+    </tbody>
+  </table>
+  
+ 
+</div>
+<div class="col-4 d-none">
+  <h4 class="text-center">Sent messages</h4>
+  <h5>{{sentMessage}}</h5>
+  <div *ngFor="let mes of sentMessages">
+     {{mes.title}}
+  </div>
 </div>
 
-<div class="col-3 messages d-none">
-  <div class="messages">
+</div>
 
-  </div >
-  <form  [formGroup]="messageForm" (ngSubmit)="submitMessage()">
-    <div class="form-group m-2">
-      <label for="message"><h4>send Message</h4></label>
-      <input formControlName="messageText"  type="text" class="form-control" id="message">
-      </div>
-      <button type="submit" class="btn but1 m-2">Submit</button>
-      </form>
-</div>
-</div>
+<app-message-form [displayMessageForm]='displayMessageForm' [class]='displayMessageForm'></app-message-form>
 </div>
 
 
