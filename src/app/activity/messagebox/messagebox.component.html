@@ -11,7 +11,7 @@
   </div>
   <div class="makeBorder">
   <h5 class="text-center p-3 ">active users </h5>
-  <div>{{message}}</div>
+  <div class="text-center">{{message}}</div>
   <div  *ngFor="let obj of userList" class="user text-center " (click)="sendMessage($event)">
       <div  [data]='obj.username'>
     {{obj.firstname}}
@@ -41,7 +41,7 @@
       <tr *ngFor="let data of inbox">
 
         <td class="spec text-center" (click)=getSpecificMessage($event) [data]='data.id'>{{data.title}}</td>
-        <td class='text-center'>{{data.firstname}} {{data.lastname}}</td>
+        <td (click)="sendMessage($event)" [data]='data.username' class='spec text-center'>{{data.firstname}} {{data.lastname}}</td>
         <td class='text-center'>{{data.date}}</td>
         <td (click)=delete($event) [data]='data.id' class='spec text-center'>delete</td>
       </tr>
@@ -67,7 +67,7 @@
       <tr *ngFor="let mes of sentMessages">
 
         <td class="spec text-center" (click)=getSpecificMessage($event) [data]='mes.id'>{{mes.title}}</td>
-        <td class='text-center'>{{mes.firstname}} {{mes.lastname}}</td>
+        <td (click)="sendMessage($event)" [data]='mes.username' class='spec text-center'>{{mes.firstname}} {{mes.lastname}}</td>
         <td class='text-center'>{{mes.date}}</td>
         <td (click)=delete($event) [data]='mes.id' class='spec text-center'>delete</td>
       </tr>
