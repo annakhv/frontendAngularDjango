@@ -19,8 +19,15 @@ export class AppComponent  {
   
 
   onActivate(ref){
-    if(ref.route.component.name === 'MainComponent'){
+    this.userInfo.user$.subscribe((data)=> console.log(data))//this doesnt help when refreshing page
+    if(ref.route.component.name === 'MainComponent'){ 
     this.username=ref.route.snapshot.params['username']
+    if (this.username == 'undefined'){
+       console.log("undefined username, page refreshed")
+       this.username=localStorage.getItem('username')
+    }else{
+       localStorage.setItem('username', this.username)
+    }
     }
    
   }

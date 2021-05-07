@@ -24,14 +24,23 @@ min-height: 700px;
 }
 
 .messages{
-    background-color: whitesmoke;
+    
     min-height: 100px;
+    padding:15px;
 }
 
 .makeBorder{
     margin-bottom: 10px;
     border:1px solid black;
-    overflow:auto;
+    
+}
+
+.textBorder{
+    margin-bottom: 10px;
+    border:1px solid black;
+    min-height: 200px;
+    
+
 }
 .col-4{
     padding:10px;

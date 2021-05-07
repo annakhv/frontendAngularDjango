@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AllUserActivityService } from '../all-user-activity.service';
 import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, FormArray, FormBuilder} from '@angular/forms';
+import {BehaviorSubject} from 'rxjs'
+
 
 @Component({
   selector: 'app-messagebox',
@@ -9,12 +11,15 @@ import {FormControl, FormGroup, FormArray, FormBuilder} from '@angular/forms';
   styleUrls: ['./messagebox.component.css']
 })
 export class MessageboxComponent implements OnInit {
+  inboxvisibility:string;
+  sentboxvisibility:string;
+  theMessageinvisibility:string;
   username:string;
   userList: Array<any>;
   message:string;
   inboxMessage:string;
   sentMessage:string;
-  singleMessage: Map<string,string>
+  theMessage:any;
   singleMessageMessage:string;
   inbox: Array<Map<string,string>>
   sentMessages:  Array<Map<string,string>>
@@ -22,12 +27,15 @@ export class MessageboxComponent implements OnInit {
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private activity: AllUserActivityService) { }
 
   ngOnInit(): void {
+    
     this.username=this.route.snapshot.paramMap.get('username')
     this.displayMessageForm='d-none'
     this.activeUsers(this.username)
     this.getInboxMessages()
     this.getSentMessages()
-
+    this.inboxvisibility='visible'
+    this.sentboxvisibility='d-none'
+    this.theMessageinvisibility='d-none'
 
   }
 
@@ -52,7 +60,20 @@ activeUsers(name){
 }
 
 sendMessage($event){
-  console.log($event.target.data)
+  this.displayMessageForm="visible"
+  this.activity.toUser$.next($event.target.data)
+
+}
+
+showinbox(){
+  this.inboxvisibility='visible'
+  this.sentboxvisibility='d-none'
+  this.theMessageinvisibility='d-none'
+}
+showsendbox(){
+  this.inboxvisibility='d-none'
+  this.sentboxvisibility='visible'
+  this.theMessageinvisibility='d-none'
 }
 
 
@@ -61,7 +82,7 @@ getInboxMessages(){
    .subscribe((responce:any)=>{
      if (responce.res == true){
         this.inbox=JSON.parse(responce.json)
-        console.log(this.inbox)
+       
      }else{
          this.inboxMessage=responce.message
          console.log(this.inboxMessage)
@@ -74,27 +95,37 @@ getSentMessages(){
   .subscribe((responce:any)=>{
     if (responce.res == true){
        this.sentMessages=JSON.parse(responce.json)
-       console.log(this.sentMessages)
+
     }else{
         this.sentMessage=responce.message
         console.log(this.sentMessage)
     }
   })
+ 
 }
 
+messageVisibility() {
+  console.log("visibility check")
+  this.inboxvisibility='d-none';
+  this.sentboxvisibility='d-none';
+  this.theMessageinvisibility='visible';
+}
 getSpecificMessage($event){
    const id =$event.target.data
    console.log(id)
    this.activity.getTheMessage(id)
    .subscribe((responce : any)=>{
       if(responce.res === true){
-          this.singleMessage=responce.singleMessage
-          console.log(this.singleMessage)
+          this.theMessage=responce.single
+          this.messageVisibility()
+         
       }else{
          this.singleMessageMessage=responce.message
+         this.messageVisibility()
       }
    })
 }
+
 
 delete($event){
   const id=$event.target.data

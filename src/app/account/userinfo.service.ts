@@ -6,16 +6,19 @@ import {userData} from '../account/login/sign';
 import {userRegister} from '../account/register/signin';
 import {catchError, retry, map, tap} from 'rxjs/operators'
 import {profile, education, work} from '../account/profile/profile.tempt';
+import {BehaviorSubject,ReplaySubject} from 'rxjs'
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserinfoService {
   private baseUrl: string=BASE_URL;
+  public user$=new ReplaySubject<any>(1)
 
   constructor(private http: HttpClient) { }
 
-
+ 
   
   logIn(user: userData) : Observable <boolean> {
     return this.http.post<boolean>(`${this.baseUrl}/account/login`, user);

@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
         .subscribe((responce: any) =>{
           if(responce.res === true){
            localStorage.setItem('token', responce.token)
+           this._UserinfoService.user$.next(this.user.username)
            this._Router.navigate(['home/', this.user.username])
           }else{
               this.warning="user credentials are not correct"

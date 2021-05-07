@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {BASE_URL} from '../../config';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 
 
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AllUserActivityService {
   private baseUrl: string=BASE_URL;
+  public toUser$=new BehaviorSubject <any>("")
   constructor(private http:HttpClient) { }
 
   getALLActivity(username:string):Observable<any>{
@@ -19,8 +20,8 @@ export class AllUserActivityService {
     return this.http.get<any>(`${this.baseUrl}/activity/activeUsers/${username}`);
   }
   
-  sendMessage(fromUser:string, toUser:string, message:string):Observable <any> {
-    return this.http.post<any>(`${this.baseUrl}/activity/sendMessage/${fromUser}/${toUser}`, message)
+  sendMessage(message:any):Observable <any> {
+    return this.http.post<any>(`${this.baseUrl}/activity/sendMessage/${message.from}/${message.to}`, message)
   }
 
   inBoxMessages(username:string):Observable <any> {
