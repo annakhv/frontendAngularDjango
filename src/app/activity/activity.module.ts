@@ -21,6 +21,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes
       )
-  ]
+  ],
+  exports:[MessageFormComponent]
 })
 export class ActivityModule { }

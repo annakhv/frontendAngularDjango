@@ -8,8 +8,9 @@ import {catchError} from 'rxjs/Operators';
 import {allcountry} from './countryData';
 import {profile, education, work} from './profile.tempt';
 import {FormControl, FormGroup, FormArray, FormBuilder} from '@angular/forms';
-
-
+import {MessageFormComponent} from '../../activity/message-form/message-form.component';
+import {BehaviorSubject} from 'rxjs'
+import { AllUserActivityService } from '../../activity/all-user-activity.service';
 
 @Component({
   selector: 'app-profile',
@@ -49,7 +50,8 @@ export class ProfileComponent implements OnInit {
   workId:string;
   searcher:string;
   ifUserFollows:boolean;
-  constructor(private _Router: Router, private fb: FormBuilder, private route: ActivatedRoute,  private _UserinfoService: UserinfoService, private imageFile:AngularFireStorage) { }
+  displayMessageForm:string;
+  constructor(private messageService: AllUserActivityService   ,private _Router: Router, private fb: FormBuilder, private route: ActivatedRoute,  private _UserinfoService: UserinfoService, private imageFile:AngularFireStorage) { }
 
   ngOnInit(): void {
    this.username=this.route.snapshot.paramMap.get('username' )
@@ -68,6 +70,7 @@ export class ProfileComponent implements OnInit {
    this.updateEduClass="d-none"
    this.updateWorkClass="d-none"
    this.countries=allcountry;
+   this.displayMessageForm='d-none'
    }
     
    profilType(searcher){   //this is to differentiate whether user sees his own profile or other user's profile
@@ -361,5 +364,12 @@ following(){
 
 activity(){
   this._Router.navigate([`activity/personalActivity/${this.username}`])
+}
+
+
+sendMessage(){
+  this.displayMessageForm="visible";
+  console.log(this.username)
+  this.messageService.toUser$.next(this.username)// send to this user
 }
 }

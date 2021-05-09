@@ -11,8 +11,8 @@ import { AuthGuard } from './auth.guard';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { EqualValidatorDirective } from './equal-validator.directive';
-
-
+import {ActivityModule} from '../activity/activity.module'
+import { MessageFormComponent } from '../activity/message-form/message-form.component';
 
 const routes: Routes =[
   {path: 'registeruser',component: RegisterComponent
@@ -33,11 +33,17 @@ const routes: Routes =[
   imports: [
     CommonModule,
     FormsModule,
+    ActivityModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forChild(routes
     )
   ],
-  exports: [RouterModule]
+  exports: [  RouterModule]
 })
-export class AccountModule { }
+
+
+
+
+export class AccountModule{ }
+

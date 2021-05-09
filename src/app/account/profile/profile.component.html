@@ -43,7 +43,7 @@
      
 </button> 
    
-<button  class="btn but  cursor  "> <h5>Send message</h5></button>
+<button (click)="sendMessage()" class="btn but  cursor  "> <h5>Send message</h5></button>
 </div>
 <br>
 <h1>{{firstname | titlecase}}</h1>
@@ -349,5 +349,5 @@
 </div>
 </div>
 
-
+<app-message-form (change)="displayMessageForm=$event" [fromUser]='searcher'  [displayMessageForm]='displayMessageForm' [class]='displayMessageForm'></app-message-form>
 </main>
