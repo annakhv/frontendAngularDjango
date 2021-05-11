@@ -11,6 +11,7 @@ import {BehaviorSubject} from 'rxjs'
   styleUrls: ['./messagebox.component.css']
 })
 export class MessageboxComponent implements OnInit {
+  public errorMsg;
   inboxvisibility:string;
   sentboxvisibility:string;
   theMessageinvisibility:string;
@@ -53,9 +54,7 @@ activeUsers(name){
        this.message=responce.message
        console.log(this.message)
      }
-  }
-     
-  )
+  },error=>this.errorMsg=error )
     
 }
 
@@ -87,7 +86,7 @@ getInboxMessages(){
          this.inboxMessage=responce.message
          console.log(this.inboxMessage)
      }
-   })
+   },error=>this.errorMsg=error)
 }
 
 getSentMessages(){
@@ -100,7 +99,7 @@ getSentMessages(){
         this.sentMessage=responce.message
         console.log(this.sentMessage)
     }
-  })
+  },error=>this.errorMsg=error)
  
 }
 
@@ -123,7 +122,7 @@ getSpecificMessage($event){
          this.singleMessageMessage=responce.message
          this.messageVisibility()
       }
-   })
+   },error=>this.errorMsg=error)
 }
 
 
@@ -137,7 +136,7 @@ delete($event){
      else{
        console.log("message is not deleted")
      }
-  })
+  },error=>this.errorMsg=error)
 
 }
 }

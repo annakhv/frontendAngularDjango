@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
   public user=new userData('username', 'password', false);
   warning: string;
+  public errorMsg;
  
   
   onSubmit() {
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
               this._Router.navigate(['login/' ])
           }
            
-        });
+        },error=>this.errorMsg=error);
 
         
 

@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  public errorMsg;
    username:string;
    result: Array<any>;
    questions: Array<string>;
@@ -46,7 +47,7 @@ submitQuestion(){
    this.questionForm.reset();
    console.log(question)
    this.postsService.askQuestion(this.username, question)
-   .subscribe((responce=>{
+   .subscribe((responce)=>{
      if (responce.res === true){
        this.messageSubmitQuestion=responce.question
        this.getQuestions()
@@ -54,31 +55,31 @@ submitQuestion(){
      }else{
        this.messageSubmitQuestion=responce.question
      }
-   }))
-
+   }, error=>this.errorMsg=error)
+  
 }
 
 getAnswers(){
   this.postsService.getAnswers(this.username)
-  .subscribe((responce=>{
+  .subscribe((responce)=>{
      if(responce.res === true){
        this.answersObject =responce.json
      }
-  }))
+  }, error=>this.errorMsg=error)
 }
 
 
 getQuestions(){
   this.postsService.getQuestions(this.username)
-    .subscribe((responce=>{
+    .subscribe((responce)=>{
       if (responce.res === true){
         this.result=JSON.parse(responce.json)
         this.questions=Object.keys(this.result)
       }else{
          console.log("error")
       }
-    }
-      ))
+    }, error=>this.errorMsg=error
+      )
 }
 
 
@@ -124,7 +125,7 @@ displayAnswerField($event){
       if(responce.res ===true){
         console.log(responce.message)
       }
-    }
+    }, error=>this.errorMsg=error
     )
   }
   
@@ -141,7 +142,7 @@ displayAnswerField($event){
      }else{
           this.answer_id=answerId
      }
-     });
+     }, error=>this.errorMsg=error);
     }
   
 
@@ -156,7 +157,7 @@ displayAnswerField($event){
         this.getAnswers()
          
       }
-    })
+    }, error=>this.errorMsg=error)
   }
 goProfile($event){
   const id=$event.target.data

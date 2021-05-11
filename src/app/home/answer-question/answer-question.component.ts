@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./answer-question.component.css']
 })
 export class AnswerQuestionComponent implements OnInit {
+  public errorMsg;
   username:string;
   answersObject:Array<Map<string,string>>;
   questionInfo:any;
@@ -39,11 +40,11 @@ export class AnswerQuestionComponent implements OnInit {
     const answer=this.answerForm.value;
     this.answerForm.reset()
     this.postsService.answerQuestion(this.username, this.questionId, answer)
-    .subscribe((responce=>{
+    .subscribe((responce)=>{
       if (responce.res === true){
          this.answerAdded.emit(true)
       }
-    }))
+    }, error=>this.errorMsg=error)
   }
  
 

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, throwError as ObservableThrowError} from 'rxjs';
 import {BASE_URL} from '../../config';
 import {userData} from '../account/login/sign';
 import {userRegister} from '../account/register/signin';
 import {catchError, retry, map, tap} from 'rxjs/operators'
 import {profile, education, work} from '../account/profile/profile.tempt';
-import {BehaviorSubject,ReplaySubject} from 'rxjs'
+import {BehaviorSubject,ReplaySubject} from 'rxjs';
 
 
 @Injectable({
@@ -18,82 +18,91 @@ export class UserinfoService {
 
   constructor(private http: HttpClient) { }
 
- 
+  errorHandler(error:HttpErrorResponse){
+    return ObservableThrowError(error.message || "Server Error");
+
+  }
   
-  logIn(user: userData) : Observable <boolean> {
-    return this.http.post<boolean>(`${this.baseUrl}/account/login`, user);
+  logIn(user: userData) : Observable <any> {
+    return this.http.post<any>(`${this.baseUrl}/account/login`, user).pipe(
+    catchError(this.errorHandler))
   }
 
   register(newuser: userRegister) : Observable <any> {
     const headers = { 'content-type': 'application/json'} 
     return this.http
-    .post<any>(`${this.baseUrl}/account/register`, newuser, {'headers': headers})
-    /* .pipe(
-       map((result)=>{
-         if( result.message =="ok"){
-            console.log("ok")
-           
-         }else{
-          console.log(result.message)
-         }
-        })
-     )   
-     */            
+    .post<any>(`${this.baseUrl}/account/register`, newuser, {'headers': headers}).pipe(
+      catchError(this.errorHandler))        
   }
+
 loggedIn(){
   return !!localStorage.getItem('token')
 }
 
 loggedOut(username:string){
-  return this.http.get<any>(`${this.baseUrl}/account/logout/${username}`);
+  return this.http.get<any>(`${this.baseUrl}/account/logout/${username}`).pipe(
+    catchError(this.errorHandler))
   
 }
 getProfile(username: string) : Observable <any> {
-  return this.http.get<any>(`${this.baseUrl}/account/profile/${username}`);
+  return this.http.get<any>(`${this.baseUrl}/account/profile/${username}`).pipe(
+    catchError(this.errorHandler))
 }
 
 getifThisUserfollowsOtherUser(thisUsername:string, otherUsername:string ): Observable <any>{
-  return this.http.get<any>(`${this.baseUrl}/account/ifThisUsernameFollows/${thisUsername}/${otherUsername}`);
+  return this.http.get<any>(`${this.baseUrl}/account/ifThisUsernameFollows/${thisUsername}/${otherUsername}`).pipe(
+    catchError(this.errorHandler))
 }
 updateprofile(userProfile:profile, username:string){
-  return this.http.post<any>(`${this.baseUrl}/account/updateProfile/${username}`, userProfile);
+  return this.http.post<any>(`${this.baseUrl}/account/updateProfile/${username}`, userProfile).pipe(
+    catchError(this.errorHandler))
 }
 
 addeducation(userEdu:education ,username:string, id:string){
-  return this.http.post<any>(`${this.baseUrl}/account/addAndUpdateEdu/${username}/${id}`, userEdu);
+  return this.http.post<any>(`${this.baseUrl}/account/addAndUpdateEdu/${username}/${id}`, userEdu).pipe(
+    catchError(this.errorHandler))
 }
 
 addwork(userWork: work, username:string, id:String){
-  return this.http.post<any>(`${this.baseUrl}/account/addAndUpdateWork/${username}/${id}`, userWork);
+  return this.http.post<any>(`${this.baseUrl}/account/addAndUpdateWork/${username}/${id}`, userWork).pipe(
+    catchError(this.errorHandler))
 }
 getEducation(username:string){
-    return this.http.get<any>(`${this.baseUrl}/account/getEdu/${username}`);
+    return this.http.get<any>(`${this.baseUrl}/account/getEdu/${username}`).pipe(
+      catchError(this.errorHandler))
 }
 
 getWork(username:string){
-    return this.http.get<any>(`${this.baseUrl}/account/getWork/${username}`);
+    return this.http.get<any>(`${this.baseUrl}/account/getWork/${username}`).pipe(
+      catchError(this.errorHandler))
 }
 
 removeEducation(id:string){
-  return this.http.get<any>(`${this.baseUrl}/account/deleteEdu/${id}`);
+  return this.http.get<any>(`${this.baseUrl}/account/deleteEdu/${id}`).pipe(
+    catchError(this.errorHandler))
 }
 removeWork(id:string){
-  return this.http.get<any>(`${this.baseUrl}/account/deleteWork/${id}`);
+  return this.http.get<any>(`${this.baseUrl}/account/deleteWork/${id}`).pipe(
+    catchError(this.errorHandler))
 }
 searchUser(searchText:string){
-  return this.http.get<any>(`${this.baseUrl}/account/search/${searchText}`);
+  return this.http.get<any>(`${this.baseUrl}/account/search/${searchText}`).pipe(
+    catchError(this.errorHandler))
 }
 
 getFollowers(username:string){
-  return this.http.get<any>(`${this.baseUrl}/account/getFollowers/${username}`);
+  return this.http.get<any>(`${this.baseUrl}/account/getFollowers/${username}`).pipe(
+    catchError(this.errorHandler))
 
 }
 
 getFollowing(username:string){
-  return this.http.get<any>(`${this.baseUrl}/account/getFollowing/${username}`);
+  return this.http.get<any>(`${this.baseUrl}/account/getFollowing/${username}`).pipe(
+    catchError(this.errorHandler))
 }
 
 followUser(thisUsername:string, otherUsername:string){
-  return this.http.get<any>(`${this.baseUrl}/account/followUser/${thisUsername}/${otherUsername}`);
+  return this.http.get<any>(`${this.baseUrl}/account/followUser/${thisUsername}/${otherUsername}`).pipe(
+    catchError(this.errorHandler))
 }
 }

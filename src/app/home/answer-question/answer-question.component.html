@@ -1,6 +1,7 @@
 <div>
-
+      
     <div class="pos p-5" [class]="displayAnswerForm">
+      <h5>{{errorMsg}}</h5>
         <form [formGroup]="answerForm" (ngSubmit)="submitAnswer()">
           <h5 (click)="close()"  class="text-right">close</h5>
           <h5>{{questionForAnswer}}</h5><br>

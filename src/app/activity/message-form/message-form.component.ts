@@ -11,6 +11,7 @@ import {BehaviorSubject} from 'rxjs'
 })
 export class MessageFormComponent implements OnInit {
   message:string;
+  public errorMsg;
   @Input() public displayMessageForm;
   @Input() public fromUser;
   @Output() public change: EventEmitter<string> =new EventEmitter()
@@ -41,7 +42,7 @@ export class MessageFormComponent implements OnInit {
          this.message=responce.message //same logic  
 
        }
-    })
+    },error=>this.errorMsg=error)
   }
 
   close(){

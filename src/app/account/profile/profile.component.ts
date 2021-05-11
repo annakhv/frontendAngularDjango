@@ -51,6 +51,7 @@ export class ProfileComponent implements OnInit {
   searcher:string;
   ifUserFollows:boolean;
   displayMessageForm:string;
+  public errorMsg;
   constructor(private messageService: AllUserActivityService   ,private _Router: Router, private fb: FormBuilder, private route: ActivatedRoute,  private _UserinfoService: UserinfoService, private imageFile:AngularFireStorage) { }
 
   ngOnInit(): void {
@@ -71,6 +72,7 @@ export class ProfileComponent implements OnInit {
    this.updateWorkClass="d-none"
    this.countries=allcountry;
    this.displayMessageForm='d-none'
+ 
    }
     
    profilType(searcher){   //this is to differentiate whether user sees his own profile or other user's profile
@@ -113,7 +115,7 @@ export class ProfileComponent implements OnInit {
       
      }
 
-  }) 
+  }, error=>this.errorMsg=error) 
 
   }
   getEducation() {
@@ -125,8 +127,8 @@ export class ProfileComponent implements OnInit {
      
 
     }
-  }
-  )
+  },  error=>this.errorMsg=error)
+
   }
   
   getWork(){
@@ -137,8 +139,7 @@ export class ProfileComponent implements OnInit {
 
 
     }
-  }
-  )
+  }, error=>this.errorMsg=error)
 }
 
 removeWork($event){
@@ -152,9 +153,7 @@ removeWork($event){
     }else{
        console.log(responce.message)
     }
-  }
-  
-  )
+  }, error=>this.errorMsg=error)
 }
 
 removeEdu($event){
@@ -168,7 +167,7 @@ removeEdu($event){
     }else{
        console.log(responce.message)
     }
-  })
+  }, error=>this.errorMsg=error)
 }
 
 
@@ -229,8 +228,7 @@ submitUpdateEdu(){
           this.getEducation()
            console.log("edu has been updated")
         }
-      }
-      )
+      }, error=>this.errorMsg=error )
  
   console.log("updateedu is submited")
 }
@@ -256,7 +254,7 @@ submitUpdateEdu(){
          this.getWork()
         console.log("work has been updated")
       }
-   })
+   },  error=>this.errorMsg=error)
   console.log("updatework has been submitted" )
 }
 
@@ -268,7 +266,7 @@ this._UserinfoService.updateprofile(this.userprofile, this.username)
       this.getProfile()
      
    }
-})
+}, error=>this.errorMsg=error)
 
 }
 
@@ -304,7 +302,7 @@ followUser(){
       console.log("followings list has been updated")
       this.ifFollows()
     }
-    }
+    }, error=>this.errorMsg=error
   )
 }
 
@@ -318,7 +316,7 @@ ifFollows(){
       this.ifUserFollows=false;
        console.log("no this user doesnt follow ")
     }
-  })
+  }, error=>this.errorMsg=error)
 }
 submitEdu(){
   const id = "add"
@@ -331,7 +329,7 @@ submitEdu(){
           this.getEducation()
       
         }
-      }
+      }, error=>this.errorMsg=error
       )
 }
 submitWork(){
@@ -344,7 +342,7 @@ submitWork(){
        this.getWork()
        
      }
-  })
+  }, error=>this.errorMsg=error)
 }
 
 submitSearch() {

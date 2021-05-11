@@ -4,6 +4,7 @@
 
     <div class="pos p-5" >
         <form [formGroup]="messageForm" (ngSubmit)="submitMessage()">
+          <h5>{{errorMsg}}</h5>
           <h5 (click)="close()"  class="text-right">close</h5>
           <div class="form-group">
             <label for="from">From user</label>

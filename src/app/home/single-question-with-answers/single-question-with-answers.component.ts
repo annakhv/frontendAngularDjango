@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./single-question-with-answers.component.css']
 })
 export class SingleQuestionWithAnswersComponent implements OnInit {
- 
+  public errorMsg;
   visibility:string;
   questionId:string;
   questionInfo:any
@@ -43,7 +43,7 @@ getQuestionWithAnswers(id){
   
     
     }
-  })
+  }, error=>this.errorMsg=error)
 
 }
 }

@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
+  public errorMsg;
   searchText:string;
   search:any;
   usernames:Array<string>;
@@ -56,7 +57,7 @@ export class SearchResultsComponent implements OnInit {
       this.message=responce.message
     
       }
-    }
+    },error=>this.errorMsg=error
     )
 
   }
@@ -75,7 +76,7 @@ export class SearchResultsComponent implements OnInit {
       }else{
         this.message=responce.message
       }
-  });
+  },error=>this.errorMsg=error);
 
   }
   following(){
@@ -96,7 +97,7 @@ export class SearchResultsComponent implements OnInit {
       this.message=responce.message
     
       }
-    }
+    },error=>this.errorMsg=error
     )
   
   }
@@ -143,7 +144,7 @@ checkUsernames(usernames){
       this.search[usernames[index]].push("Follow")
     }
   }
-  }
+  },error=>this.errorMsg=error
   )
 }
 
@@ -174,7 +175,7 @@ followOrUnfollow($event){
             }
             */
           }
-     }
+     },error=>this.errorMsg=error
       )
 
 }

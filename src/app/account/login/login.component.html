@@ -5,6 +5,7 @@
 <main class="background-color height p-4">
 <div class="container width">
   <div class="login p-5">
+    <h5>{{errorMsg}}</h5>
     <form #filterForm="ngForm" (ngSubmit)="onSubmit()">
        <p>
          <small>{{warning}}</small>

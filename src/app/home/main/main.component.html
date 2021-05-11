@@ -1,6 +1,7 @@
 
 <main>
 <div class="container p-4 ">
+  <h4>{{errorMsg}}</h4>
   <div class="row justify-content-between">
       <div class="col-8">
         <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">

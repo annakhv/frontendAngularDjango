@@ -8,6 +8,7 @@ import { AllUserActivityService } from '../all-user-activity.service';
   styleUrls: ['./user-activity.component.css']
 })
 export class UserActivityComponent implements OnInit {
+  public errorMsg;
   username:string;
   info: Array<any>
   constructor(private route:ActivatedRoute, private user_activity:AllUserActivityService) { }
@@ -27,7 +28,7 @@ getActivity(){
        this.info=JSON.parse(responce.json)
        console.log(this.info)
      }
-   }
+   },error=>this.errorMsg=error
    )
 }
 
