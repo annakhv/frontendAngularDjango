@@ -1,9 +1,9 @@
 
 <main>
-<div class="container p-4 ">
+<div class="container-fluid p-4 ">
   <h4>{{errorMsg}}</h4>
   <div class="row justify-content-between">
-      <div class="col-8">
+      <div class="col-8 ">
         <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
             <div class="form-group m-2">
               <label for="question"><h4>Ask Question</h4></label>
@@ -29,9 +29,9 @@
     <hr>
    <h6>{{object.answer}}</h6> 
   <hr>
-  <div class="container">
+  <div class="container" >
     <div class="row justify-content-left">
-  <div (click)=getComments($event) [data]='object.answerId' class="col-4 title p-2 text-center">
+  <div (click)=getComments($event) [data]='object.answerId' class=" col-4 title p-2 text-center">
      Comments
   </div>
   <div  [ngClass]="{'upVoted': object.thisUserUpVotedAnswer}" (click)=upVote($event) [data]='object.answerId' class="col-2 title p-2 text-center">
@@ -72,7 +72,7 @@
 </div>
 
 
-<div class="col-4">
+<div class="remove col-4">
     <h3 class="m-2">Click to answer Question</h3>
     <div [data]="result[question][3]" (click)='displayAnswerField($event)' *ngFor='let question of questions'  class="question m-3 p-3 m-2">
           <div [data]="result[question][3]">

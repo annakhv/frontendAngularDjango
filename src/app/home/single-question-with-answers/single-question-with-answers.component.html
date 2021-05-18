@@ -19,7 +19,7 @@
         UpVotes | {{item.upVotes}}
      
     </div>
-    <div class="col-10 answer p-4 m-2">
+    <div class="col-10  answer p-4 m-2">
      {{item.answer}}
      
      <hr>
@@ -27,13 +27,15 @@
      by {{item.firstname}}  {{item.lastname}}  {{item.date}}
     </div>
   </div>
+ 
   </div>
  
+  <div (click)='answerForm($event)' [id]='questionInfo.id'  class=" addAnswer p-4 mt-3 ">click to add your answer</div>
 </div>
 
 
-<div (click)='answerForm($event)' [id]='questionInfo.id'  class=" addAnswer p-4 mt-3 text-center">click to add your answer</div>
-<app-answer-question (answerAdded)="responceOk($event)"  (change)="visibility=$event" [questionId]='questionInfo.id'   [displayAnswerForm]="visibility"  [questionForAnswer]='questionInfo.question'></app-answer-question>
+
+<app-answer-question (answerAdded)="responceOk($event)"  (change)="displayAnswerForm=$event" [questionId]='questionInfo.id'   [displayAnswerForm]="displayAnswerForm"  [questionForAnswer]='questionInfo.question'></app-answer-question>
 </main>
 
 

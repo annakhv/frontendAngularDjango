@@ -154,8 +154,17 @@ displayAnswerField($event){
     this.postsService.upVoteAnswer(answer_id, this.username)
     .subscribe((responce:any)=>{
       if (responce.res=== true ){
-        this.getAnswers()
-         
+        for (let item in this.answersObject){
+          if( this.answersObject[item]['answerId']=== answer_id){
+            if( this.answersObject[item]['thisUserUpVotedAnswer']===false){
+              this.answersObject[item]['thisUserUpVotedAnswer']=true;
+              this.answersObject[item]['upVotes']++;
+          }else{
+            this.answersObject[item]['thisUserUpVotedAnswer']=false;
+            this.answersObject[item]['upVotes']--;
+          }
+        }
+      }
       }
     }, error=>this.errorMsg=error)
   }

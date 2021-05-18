@@ -34,10 +34,10 @@ main{
 
 .addAnswer{
     background-color:  lightgoldenrodyellow;
-    border-radius: 50px;
-    width: 30%;
+    border-radius: 10px;
+    width: 85%;
     height: 35px;
-    margin:auto;
+    margin-left: 14%;
     font-size: larger;
     border:1px solid rgb(247, 247, 197);
     text-align: center;

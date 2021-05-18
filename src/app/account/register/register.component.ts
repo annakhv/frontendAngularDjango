@@ -10,7 +10,7 @@ import {EqualValidatorDirective} from '../equal-validator.directive'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  errorMsg:string;
   constructor(private _UserinfoService : UserinfoService, private _Router: Router) { }
 
   ngOnInit(): void {
@@ -19,7 +19,6 @@ export class RegisterComponent implements OnInit {
   newuser=new userRegister('username', 'firstname', 'lastname', 'example@mail.com', 'password1', "password1")
   warning:string;
   submitRegister() {
-    console.log(this.newuser)
     try{
       this._UserinfoService.register(this.newuser)
         .subscribe((responce: any) =>{
@@ -35,7 +34,7 @@ export class RegisterComponent implements OnInit {
           
         });
       }catch(err){
-        console.log(err)
+        this.errorMsg=err
         this._Router.navigate(['registeruser'])
       }
 

@@ -11,14 +11,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class SingleQuestionWithAnswersComponent implements OnInit {
   public errorMsg;
-  visibility:string;
+  displayAnswerForm:string;
   questionId:string;
   questionInfo:any
   answers : Array<Map<string,string>>
   constructor(private _Router: Router, private route: ActivatedRoute,private postsService:HomepostsService) { }
 
   ngOnInit(): void {
-    this.visibility='d-none'
+    this.displayAnswerForm='d-none'
     this.questionId=this.route.snapshot.paramMap.get('questionId' )
     this.getQuestionWithAnswers(this.questionId)
   }
@@ -29,7 +29,7 @@ responceOk($event){
 }
 
 answerForm($event){
-  this.visibility='visible'
+  this.displayAnswerForm='visible'
   
 }
 

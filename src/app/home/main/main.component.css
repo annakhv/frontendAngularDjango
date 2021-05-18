@@ -13,6 +13,7 @@ main{
     border-radius: 10px;
     box-shadow:   0 0 3px 2px rgb(231, 231, 185);
     cursor: pointer;
+    word-wrap: break-word;
 }
 
 .question:hover{
@@ -27,6 +28,7 @@ main{
 .comment{
     background-color: wheat;
     border-radius: 5px;
+   
 }
 
 .title{
@@ -41,6 +43,7 @@ main{
 }
 
 .upVoted{
+   
     background-color: rgb(241, 231, 211);
 }
 
@@ -71,13 +74,14 @@ main{
 
 .but {
     border:1px solid wheat;
+  
 }
 .but:hover{
     background-color: wheat;
 }
 
 .but1{
-   
+ 
     border: 1px solid rgb(236, 236, 135);
 }
 
@@ -106,3 +110,7 @@ main{
 .nameBut:hover{
     color: rgb(209, 5, 5);
 }
+
+
+
+ 
