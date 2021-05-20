@@ -1,6 +1,6 @@
 
 <main>
-
+  <app-answer-question [class]="displayAnswerForm" (answerAdded)="responceOk($event)"  (change)="displayAnswerForm=$event" [questionId]='questionInfo.id'   [displayAnswerForm]="displayAnswerForm"  [questionForAnswer]='questionInfo.question'></app-answer-question>
 
   <div class="container">
    
@@ -35,7 +35,7 @@
 
 
 
-<app-answer-question (answerAdded)="responceOk($event)"  (change)="displayAnswerForm=$event" [questionId]='questionInfo.id'   [displayAnswerForm]="displayAnswerForm"  [questionForAnswer]='questionInfo.question'></app-answer-question>
+
 </main>
 
 
