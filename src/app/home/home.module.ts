@@ -9,7 +9,7 @@ import { SingleQuestionWithAnswersComponent } from './single-question-with-answe
 import { AnswerQuestionComponent } from './answer-question/answer-question.component';
 
 const routes: Routes =[
-  {path: '', redirectTo:'home/:username', pathMatch:'full' },
+ 
   {path: 'home/:username', component: MainComponent, canActivate: [AuthGuard] 
 },
 {path: 'question/:questionId/:username', component: SingleQuestionWithAnswersComponent, canActivate: [AuthGuard]},

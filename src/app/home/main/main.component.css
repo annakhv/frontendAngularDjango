@@ -28,7 +28,7 @@ main{
     box-shadow:   0 0 2px 3px rgb(243, 243, 196);
 }
 .comment{
-    background-color:rgb(242, 243, 236);
+    background-color:rgb(240, 196, 75);
     border-radius: 5px;
    
 }
@@ -79,7 +79,7 @@ main{
   
 }
 .but:hover{
-    background-color: rgb(248, 236, 69);
+    background-color: rgb(228, 236, 156);
 }
 
 .but1{
@@ -88,7 +88,7 @@ main{
 }
 
 .but1:hover{
-    background-color: rgb(248, 236, 69);
+    background-color: rgb(243, 189, 39);
    
 }
 
