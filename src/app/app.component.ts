@@ -25,6 +25,7 @@ export class AppComponent  {
     if (this.username == 'undefined'){
        console.log("undefined username, page refreshed")
        this.username=localStorage.getItem('username')
+       
     }else{
        localStorage.setItem('username', this.username)
     }

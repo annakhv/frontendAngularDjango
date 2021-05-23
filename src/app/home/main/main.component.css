@@ -3,12 +3,13 @@
 
 main{
     padding-top: 70px;
-    background-color: rgb(245, 255, 158);
+    background-color: rgb(242, 243, 236);
     min-height: 650px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .question{
-    background-color: lightgoldenrodyellow;
+
+    background-color: rgb(242, 243, 236);
     min-height: 50px;
     border-radius: 10px;
     box-shadow:   0 0 3px 2px rgb(231, 231, 185);
@@ -17,34 +18,35 @@ main{
 }
 
 .question:hover{
-    background-color: lightyellow;
+    background-color: rgb(231, 235, 210);
 }
 
 .answer{
-    background-color:  lightgoldenrodyellow;
+  
+    background-color:  rgb(243, 189, 39);
     border-radius: 10px;
-    box-shadow:   0 0 3px 2px rgb(243, 243, 196);
+    box-shadow:   0 0 2px 3px rgb(243, 243, 196);
 }
 .comment{
-    background-color: wheat;
+    background-color:rgb(234, 241, 170);
     border-radius: 5px;
    
 }
 
 .title{
-    background-color: wheat;
+    background-color: rgb(242, 243, 236);
     border-radius: 5px;
     border: 2px solid lightgoldenrodyellow;
     cursor:pointer;
 }
 
 .title:hover{
-    background-color: rgb(241, 231, 211);
+    background-color: rgb(234, 241, 170);
 }
 
 .upVoted{
    
-    background-color: rgb(241, 231, 211);
+    background-color: rgb(234, 241, 170);
 }
 
 .opacity{
@@ -77,7 +79,7 @@ main{
   
 }
 .but:hover{
-    background-color: wheat;
+    background-color: rgb(248, 236, 69);
 }
 
 .but1{
@@ -86,7 +88,7 @@ main{
 }
 
 .but1:hover{
-    background-color: rgb(230, 238, 159);
+    background-color: rgb(248, 236, 69);
    
 }
 

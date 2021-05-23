@@ -9,7 +9,7 @@
     }
 
 .background-color{
-   background-color: rgb(245, 255, 158);
+   background-color: rgb(242, 243, 236);
 }
 
 .font {
@@ -17,13 +17,13 @@
 }
 
 .login{
-    background-color: rgb(243, 75, 75);
-    border-radius: 3px;
+    background-color: rgb(243, 189, 39);
+    border-radius: 20px;
 }
 
 .login:hover,
 .login:active
 {
-    background-color:  rgb(236, 63, 63);
+    background-color:   rgb(243, 189, 39);
     cursor: pointer;
 }

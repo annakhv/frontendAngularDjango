@@ -79,13 +79,13 @@
 </div>
 
 <div *ngIf="theMessage " [class]="theMessageinvisibility" class='col-10 messages makeBorder' >
-  <div class="p-4" >
+  <div class="p-4 m-2 messagecolor" >
 Sending date: {{theMessage.date}} <hr>
 from : {{theMessage.senderfname}} {{theMessage.senderlname}}<hr>
 to: {{theMessage.getterfname}}  {{theMessage.getterlname}}<hr>
 message title: {{theMessage.textTitle}}<hr>
 </div>
-<div class='m-2 p-4 textBorder' >
+<div class='m-2 p-4 textBorder messagecolor' >
   {{theMessage.text}}
 
 </div>

@@ -2,7 +2,7 @@ main{
     padding-top: 70px;
 }
 .background-color{
-    background-color: rgb(245, 255, 158);
+    background-color: rgb(242, 243, 236);
 }
 
 .font{
@@ -14,20 +14,23 @@ main{
     min-height: 800px;
  
     }
-
+.each{
+    border-radius: 15px;
+    padding:15px;
+    background-color:  rgb(243, 189, 39);
+    box-shadow:   0 0 3px 2px rgb(231, 231, 185);
+}
 .item{
-    background-color: rgb(243, 243, 190);
+    background-color: rgb(242, 243, 236);
     min-height: 50px;
     border-radius: 10px;
+    box-shadow:   0 0 3px 2px rgb(231, 231, 185);
 }
 
-.item:hover{
-    background-color: rgb(247, 247, 194);
-}
+
 
 .detail{
-    background-color: wheat;
-    opacity: 0.6;
+ 
     border-radius: 5px;
     padding: 10px;
     margin: 10px;

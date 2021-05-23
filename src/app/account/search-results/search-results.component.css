@@ -1,7 +1,7 @@
 
 
 .background-color{
-    background-color: rgb(245, 255, 158);
+    background-color: rgb(242, 243, 236);
     padding-top: 70px;
 }
 
@@ -12,18 +12,16 @@
 
 
 .user{
-    background-color:rgb(245, 253, 199);
+    background-color:rgb(243, 189, 39);
     width: 70%;
     max-height: 200px;
     border-radius: 10px;
 }
 
-.user:hover{
-    background-color:rgb(240, 250, 186);
-}
+
 
 .btn:hover{
-    background-color:rgb(237, 248, 175);
+    background-color:rgb(228, 236, 156);
     border:2px solid rgb(244, 247, 228);
     
 }

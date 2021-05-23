@@ -6,29 +6,47 @@
    <div class="col-11" *ngIf="info">
    <div *ngFor="let data of info" class="item">
     <div (click)="removeQuestion($event)" [data]='data.id' *ngIf="data.hasOwnProperty('question')" class="question m-2 p-3">
-       <div class="detail">
+       <div class=" detail">
         {{data.date}} <br>
+        <div class="each mt-2">
        asked Question:<br>
       </div>
+      </div>
+      <div class="each">
         {{data.question}} 
+      </div>
     </div>
     <div (click)="removeAnswer($event)" [data]='data.id' *ngIf="data.hasOwnProperty('answer')"class="answer m-2 p-3">
        <div class="detail">
-      {{data.date}}<br>
+         {{data.date}}<br>
+          <div class="each mt-2 mb-2">
+    
      To Question  {{data.toQuestion}}  <br>
+   </div>
+     <div class="each mb-2">
      Answered:<br>
    </div>
+   </div>
+   <div class="each">
       {{data.answer}}
+   </div>
     </div>
     <div (click)="removeComment($event)" [data]='data.id' *ngIf="data.hasOwnProperty('comment')" class="comment m-2 p-3">
        <div class="detail">
        {{data.date}}<br>
+       <div class="each mt-2 mb-2">
        To the answer: {{data.toAnswer}}<br>
+      </div>
+      <div class="each mb-2">
        On the question: {{data.ofQuestion}}<br>
+      </div>
+      <div class="each mb-2">
        Commented:<br>
       </div>
-     
+      </div>
+     <div class="each">
        {{data.comment}}
+      </div>
     </div>
    </div>
 </div>

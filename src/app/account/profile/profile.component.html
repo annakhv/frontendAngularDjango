@@ -104,7 +104,7 @@
 </div>
 <div [class]="_display" class="pos1 p-3 ">
   <h6 (click)="eduWork()" class="text-right">close</h6>
-    <button (click)="edu()" class="sbtn but p-2">add Education</button> <br>
+    <button (click)="edu()" class="sbtn but mb-1 p-2">add Education</button> <br>
    <button (click)="work()" class="sbtn but p-2">add Workplace</button>
 </div>
 
@@ -314,8 +314,8 @@
           </div>
         </td>
         <td>
-        <div (click)="updateEdu($event)"  [class]="userType"><button [data]="data.id" class="btn but">update</button></div>
-        <div (click)="removeEdu($event)"  [class]="userType"><button [data]="data.id" class="btn but">delete</button></div>
+        <div (click)="updateEdu($event)"  [class]="userType"><button [data]="data.id"  class="sbtn mt-2 mb-2">update</button></div>
+        <div (click)="removeEdu($event)"  [class]="userType"><button [data]="data.id" class=sbtn>delete</button></div>
       </td>
       </tr>
     </tbody>
