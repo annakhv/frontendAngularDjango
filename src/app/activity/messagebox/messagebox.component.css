@@ -31,42 +31,37 @@ min-height: 700px;
 
 .makeBorder{
     margin-bottom: 10px;
-    border:1px solid black;
+    box-shadow:   0 0 2px 3px rgb(224, 217, 198); 
+    border-radius: 5px;
+    background-color:rgb(243, 189, 39);
     
 }
 
 .textBorder{
     margin-bottom: 10px;
-    border:1px solid black;
+    border:1px solid rgb(240, 231, 206); 
     min-height: 200px;
+    border-radius: 10px;
+    box-shadow:   0 0 2px 3px rgb(224, 217, 198); 
+
     
 
 }
 .col-4{
     padding:10px;
-    border:1px solid black;
     min-height: 500px;
 }
 
-table.table-bordered{
-    border:1px solid black;
-    margin-top:20px;
-  }
-table.table-bordered > thead > tr > th{
-    border:1px solid black;
-}
-table.table-bordered > tbody > tr > td{
-    border:1px solid black;
-}
+
 
 .spec:hover{
     text-decoration: underline;
 }
 
 
-.table{
-    background-color:rgb(243, 189, 39); 
-    border-radius: 5px;
+.box{
+    background-color:  rgb(242, 243, 236);
+   
 }
 .but:focus,
 .but:active
@@ -76,13 +71,14 @@ table.table-bordered > tbody > tr > td{
 }
 
 .but {
-    border:1px solid rgb(231, 230, 136);
+  border: 1px solid rgb(234, 241, 170);
     width:100px;
 }
 .but:hover{
-    background-color: rgb(243, 189, 39);
+    background-color: rgb(228, 236, 156);
 }
 
 .messagecolor{
-    background-color: rgb(243, 189, 39);
+    background-color:rgb(243, 189, 39); 
 }
+
