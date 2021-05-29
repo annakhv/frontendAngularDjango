@@ -10,7 +10,7 @@ import { MessageFormComponent } from './message-form/message-form.component';
 
 const routes : Routes = [
   {path: 'personalActivity/:username', component:UserActivityComponent, canActivate: [AuthGuard] },
-  {path: 'messageBox/:username', component: MessageboxComponent, canActivate: [AuthGuard]}
+  {path: 'messageBox/:searcher', component: MessageboxComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({

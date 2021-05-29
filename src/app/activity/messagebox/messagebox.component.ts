@@ -15,7 +15,7 @@ export class MessageboxComponent implements OnInit {
   inboxvisibility:string;
   sentboxvisibility:string;
   theMessageinvisibility:string;
-  username:string;
+  searcher:string;
   userList: Array<any>;
   message:string;
   inboxMessage:string;
@@ -29,9 +29,9 @@ export class MessageboxComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.username=this.route.snapshot.paramMap.get('username')
+    this.searcher=this.route.snapshot.paramMap.get('searcher')
     this.displayMessageForm='d-none'
-    this.activeUsers(this.username)
+    this.activeUsers(this.searcher)
     this.getInboxMessages()
     this.getSentMessages()
     this.inboxvisibility='visible'
@@ -77,7 +77,7 @@ showsendbox(){
 
 
 getInboxMessages(){
-   this.activity.inBoxMessages(this.username)
+   this.activity.inBoxMessages(this.searcher)
    .subscribe((responce:any)=>{
      if (responce.res == true){
         this.inbox=JSON.parse(responce.json)
@@ -90,7 +90,7 @@ getInboxMessages(){
 }
 
 getSentMessages(){
-  this.activity.sentMessages(this.username)
+  this.activity.sentMessages(this.searcher)
   .subscribe((responce:any)=>{
     if (responce.res == true){
        this.sentMessages=JSON.parse(responce.json)
@@ -128,7 +128,7 @@ getSpecificMessage($event){
 
 delete($event){
   const id=$event.target.data
-  this.activity.deleteMessage(this.username, id)
+  this.activity.deleteMessage(this.searcher, id)
   .subscribe((responce :any)=>{
      if(responce.res === true){
        console.log("message deleted successfully")

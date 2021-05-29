@@ -14,24 +14,30 @@ export class AppComponent  {
   constructor(private router: Router, private userInfo:UserinfoService ){}
   title = 'newform';
   dropdown='d-none';
-  username:string;
+  searcher:string;
  
   
 
   onActivate(ref){
-    this.userInfo.user$.subscribe((data)=> console.log(data))//this doesnt help when refreshing page
-    if(ref.route.component.name === 'MainComponent'){ 
-    this.username=ref.route.snapshot.params['username']
-    if (this.username == 'undefined'){
+ //   this.userInfo.user$.subscribe((data)=> console.log(data))//this doesnt help when refreshing page
+  if(ref.route.component.name === 'MainComponent'){ 
+    this.searcher=ref.route.snapshot.params['searcher']
+    if (this.searcher === 'undefined'){
        console.log("undefined username, page refreshed")
-       this.username=localStorage.getItem('username')
+       this.searcher=localStorage.getItem('searcher')
+  
+       this.router.navigate(['home', this.searcher])
        
     }else{
-       localStorage.setItem('username', this.username)
+       localStorage.setItem('searcher', this.searcher)
+     
+      
     }
-    }
-   
+
+   }
+  
   }
+  
   toggle(){
     if (this.dropdown === 'd-none'){
       this.dropdown ='visible'
@@ -41,7 +47,7 @@ export class AppComponent  {
   }
 
   logOut(){
-     this.userInfo.loggedOut(this.username)
+     this.userInfo.loggedOut(this.searcher)
      .subscribe((responce:any)=>{
         if (responce.res === true){
           localStorage.removeItem('token')
@@ -55,4 +61,4 @@ export class AppComponent  {
   }
 
  
-}
+    }

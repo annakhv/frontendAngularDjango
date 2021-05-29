@@ -14,7 +14,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AnswerQuestionComponent implements OnInit {
   public errorMsg;
-  username:string;
+  searcher:string;
   answersObject:Array<Map<string,string>>;
   questionInfo:any;
   answers: Array<Map<string,string>>;
@@ -26,7 +26,7 @@ export class AnswerQuestionComponent implements OnInit {
   constructor(private _Router: Router, private route: ActivatedRoute, private postsService:HomepostsService, private fb:FormBuilder) { }
   
   ngOnInit(): void {
-    this.username=this.route.snapshot.paramMap.get('username')
+    this.searcher=this.route.snapshot.paramMap.get('searcher')
 
     
   }
@@ -39,7 +39,7 @@ export class AnswerQuestionComponent implements OnInit {
   submitAnswer(){
     const answer=this.answerForm.value;
     this.answerForm.reset()
-    this.postsService.answerQuestion(this.username, this.questionId, answer)
+    this.postsService.answerQuestion(this.searcher, this.questionId, answer)
     .subscribe((responce)=>{
       if (responce.res === true){
          this.answerAdded.emit(true)

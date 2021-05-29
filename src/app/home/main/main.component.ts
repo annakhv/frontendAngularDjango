@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class MainComponent implements OnInit {
   public errorMsg;
-   username:string;
+   searcher:string;
    result: Array<any>;
    questions: Array<string>;
    displayAnswerForm:string;
@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
   constructor(private _Router: Router, private route: ActivatedRoute,private postsService:HomepostsService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
-    this.username=this.route.snapshot.paramMap.get('username' )
+    this.searcher=this.route.snapshot.paramMap.get('searcher' )
     this.displayAnswerForm='d-none'
     this.getQuestions()
     this.getAnswers()
@@ -46,7 +46,7 @@ submitQuestion(){
    const question=this.questionForm.value
    this.questionForm.reset();
    console.log(question)
-   this.postsService.askQuestion(this.username, question)
+   this.postsService.askQuestion(this.searcher, question)
    .subscribe((responce)=>{
      if (responce.res === true){
        this.messageSubmitQuestion=responce.question
@@ -60,7 +60,7 @@ submitQuestion(){
 }
 
 getAnswers(){
-  this.postsService.getAnswers(this.username)
+  this.postsService.getAnswers(this.searcher)
   .subscribe((responce)=>{
      if(responce.res === true){
        this.answersObject =responce.json
@@ -70,7 +70,7 @@ getAnswers(){
 
 
 getQuestions(){
-  this.postsService.getQuestions(this.username)
+  this.postsService.getQuestions(this.searcher)
     .subscribe((responce)=>{
       if (responce.res === true){
         this.result=JSON.parse(responce.json)
@@ -85,7 +85,7 @@ getQuestions(){
 
 
 thisQuestionAnswers($event){
-  this._Router.navigate(['question/', $event.target.id, this.username])
+  this._Router.navigate(['question/', $event.target.id, this.searcher])
   
 }
 
@@ -120,7 +120,7 @@ displayAnswerField($event){
     const answerId=$event.target.data
     const comment=this.commentForm.value
     this.commentForm.reset()
-    this.postsService.addComment(this.username, answerId, comment)
+    this.postsService.addComment(this.searcher, answerId, comment)
     .subscribe((responce:any)=>{
       if(responce.res ===true){
         console.log(responce.message)
@@ -133,7 +133,7 @@ displayAnswerField($event){
     this.commentsObject=[]
      const answerId=$event.target.data
      console.log(answerId)
-     this.postsService.getComments( answerId, this.username)
+     this.postsService.getComments( answerId, this.searcher)
      .subscribe((responce)=>{
         if(responce.res === true){
           this.commentsObject =JSON.parse(responce.json)
@@ -151,7 +151,7 @@ displayAnswerField($event){
     console.log($event.target)
     console.log($event.target.data)
     const answer_id=$event.target.data
-    this.postsService.upVoteAnswer(answer_id, this.username)
+    this.postsService.upVoteAnswer(answer_id, this.searcher)
     .subscribe((responce:any)=>{
       if (responce.res=== true ){
         for (let item in this.answersObject){
@@ -170,7 +170,7 @@ displayAnswerField($event){
   }
 goProfile($event){
   const id=$event.target.data
-  this._Router.navigate(["profile/", id, this.username])
+  this._Router.navigate(["profile/", id, this.searcher])
 
 }
   

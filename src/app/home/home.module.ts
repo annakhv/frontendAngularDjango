@@ -10,9 +10,9 @@ import { AnswerQuestionComponent } from './answer-question/answer-question.compo
 
 const routes: Routes =[
  
-  {path: 'home/:username', component: MainComponent, canActivate: [AuthGuard] 
+  {path: 'home/:searcher', component: MainComponent, canActivate: [AuthGuard] 
 },
-{path: 'question/:questionId/:username', component: SingleQuestionWithAnswersComponent, canActivate: [AuthGuard]},
+{path: 'question/:questionId/:searcher', component: SingleQuestionWithAnswersComponent, canActivate: [AuthGuard]},
 ]
 
 
